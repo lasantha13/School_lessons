@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Masterclass: Patterns & Binary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for a fun, interactive feel */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc;
+        }
+        .lesson-section {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        .concept-title {
+            color: #1e3a8a; /* Dark Blue */
+            font-weight: 800;
+            border-bottom: 4px solid #3b82f6; /* Blue Accent */
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .code-box {
+            background-color: #e0f2fe; /* Light Blue */
+            color: #1e40af;
+            padding: 0.75rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .quiz-container {
+            border: 2px solid #f97316; /* Orange border for quiz */
+            padding: 1.5rem;
+            border-radius: 1rem;
+            background-color: #fff7ed; /* Light Orange background */
+            margin-top: 2rem;
+        }
+        .quiz-question {
+            font-weight: 600;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+            color: #9a3412;
+        }
+        .quiz-answer {
+            cursor: pointer;
+            padding: 0.5rem;
+            margin: 0.25rem 0;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+            border: 1px solid #fed7aa;
+        }
+        .quiz-answer:hover {
+            background-color: #fdba74; /* Orange hover */
+        }
+        .correct {
+            background-color: #a7f3d0 !important; /* Green for correct */
+            border-color: #059669 !important;
+            font-weight: 600;
+        }
+        .incorrect {
+            background-color: #fecaca !important; /* Red for incorrect */
+            border-color: #dc2626 !important;
+            font-weight: 600;
+        }
+        .feedback {
+            margin-top: 1rem;
+            font-weight: 600;
+        }
+        /* Style for the interactive elements */
+        .interactive-tool {
+            border: 2px dashed #f97316;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-top: 1rem;
+            background-color: #fff;
+        }
+        input[type="number"], input[type="text"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            max-width: 100%;
+        }
+        button {
+            padding: 0.5rem 1rem;
+            background-color: #3b82f6;
+            color: white;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        button:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 max-w-4xl mx-auto">
+
+    <header class="text-center mb-8">
+        <h1 class="text-4xl concept-title inline-block">Math Power-Up: Lesson 1</h1>
+        <p class="text-xl text-gray-600 mt-2">Let's explore the secrets hidden in numbers!</p>
+    </header>
+
+    <!-- LESSON 1: NUMBER PATTERNS -->
+    <div id="lesson1" class="lesson-section">
+        <h2 class="text-3xl concept-title">1. Number Patterns (Arithmetic Sequences)</h2>
+
+        <p class="text-lg mb-4">A **Number Pattern** is just a list of numbers (called **terms**) that follows a rule. For our lesson, we are focusing on the most common type: the **Arithmetic Sequence**.</p>
+        
+        <h3 class="text-2xl font-semibold text-gray-700 mb-2">The Constant Jump: Common Difference (d)</h3>
+        <p class="mb-4">
+            In an arithmetic sequence, you always add (or subtract) the same number to get from one term to the next. This constant value is called the **Common Difference ($d$)**.
+        </p>
+        <div class="code-box">
+            <p><strong>Example 1:</strong> 5, 8, 11, 14, 17, ...</p>
+            <p>To get from 5 to 8, you add 3. To get from 8 to 11, you add 3. The common difference $d$ is 3.</p>
+            <p><strong>Example 2:</strong> 20, 16, 12, 8, ...</p>
+            <p>To get from 20 to 16, you add -4 (or subtract 4). The common difference $d$ is -4.</p>
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-700 mb-2">The Magic Formula: The General Term ($T_n$)</h3>
+        <p class="mb-4">
+            If you want to find the 50th term or the 834th term, you don't want to count all the way! We use a single formula, the **General Term ($T_n$)**, to find *any* term based on its position ($n$).
+        </p>
+        <p class="font-bold text-xl text-green-700 mb-4">
+            T<sub>n</sub> = a + (n-1)d
+        </p>
+        <ul class="list-disc list-inside ml-4 mb-4">
+            <li>T<sub>n</sub>: The value of the n<sup>th</sup> term you are looking for.</li>
+            <li>a: The first term (T<sub>1</sub>).</li>
+            <li>n: The term number (1st, 2nd, 3rd, etc.).</li>
+            <li>d: The common difference.</li>
+        </ul>
+
+        <h3 class="text-2xl font-semibold text-gray-700 mb-2">Deep Dive: Developing the General Term (The Hard Part!)</h3>
+        <p class="mb-4">
+            This is where you go from a list of numbers to the formula!
+        </p>
+        
+        <div class="code-box">
+            <p class="font-bold">Sequence: 5, 11, 17, 23, ...</p>
+            <p>Step 1: Find the Common Difference ($d$).</p>
+            <p> 11 - 5 = 6. So, $d = 6$.</p>
+            
+            <p>Step 2: Compare the terms to the multiples of $d$ (which is 6).</p>
+            <p>Multiples of 6: 6, 12, 18, 24, ...</p>
+            <p>Our Sequence: 5, 11, 17, 23, ...</p>
+            
+            <p>Step 3: Find the link. How do you get from the multiple of 6 to the term in the sequence?</p>
+            <p>6 - 1 = 5 (1st term)</p>
+            <p>12 - 1 = 11 (2nd term)</p>
+            <p>18 - 1 = 17 (3rd term)</p>
+
+            <p class="font-bold mt-2">Step 4: Write the General Term ($T_n$)</p>
+            <p>Since the n<sup>th</sup> multiple of 6 is 6n, and we subtract 1 each time, the formula is:</p>
+            <p class="text-xl font-bold">T<sub>n</sub> = 6n - 1</p>
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-700 mt-6 mb-2">Interactive Challenge: Find the Term!</h3>
+        <div class="interactive-tool" id="pattern-solver">
+            <p class="mb-2">Find the n<sup>th</sup> term for the sequence 3, 7, 11, 15, $\dots$</p>
+            <div class="flex flex-col space-y-2">
+                <label for="n-term" class="font-medium">Which term number (n) do you want to find? (e.g., 10)</label>
+                <input type="number" id="n-term" value="10" class="w-full p-2 border-2 border-blue-300">
+                <button onclick="calculatePatternTerm()">Calculate Term</button>
+            </div>
+            <p id="pattern-result" class="feedback text-blue-700 mt-3"></p>
+        </div>
+    </div>
+    
+    <!-- LESSON 2: BINARY NUMBERS -->
+    <div id="lesson2" class="lesson-section">
+        <h2 class="text-3xl concept-title">2. Binary Numbers (Base Two)</h2>
+        
+        <p class="text-lg mb-4">You use the **Decimal System** (Base 10) every day. It uses 10 digits (0-9) and place values that are powers of 10 (10<sup>0</sup>, 10<sup>1</sup>, 10<sup>2</sup>, $\dots$). Computers don't have 10 fingers, they only have two states: **ON** (1) and **OFF** (0). This is the **Binary System** (Base 2). </p>
+
+        <h3 class="text-2xl font-semibold text-gray-700 mb-2">The Binary Place Values</h3>
+        <p class="mb-4">
+            In Base 2, the place values are powers of 2.
+        </p>
+        <div class="code-box flex justify-around text-center">
+            <p>... 2<sup>5</sup>=32</p>
+            <p>2<sup>4</sup>=16</p>
+            <p>2<sup>3</sup>=8</p>
+            <p>2<sup>2</sup>=4</p>
+            <p>2<sup>1</sup>=2</p>
+            <p>2<sup>0</sup>=1</p>
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-700 mb-2">Converting Binary to Decimal (The Easy Way!)</h3>
+        <p class="mb-4">
+            Just multiply the binary digit by its place value and add them up.
+        </p>
+        <div class="code-box">
+            <p class="font-bold">Example: Convert 1101<sub>two</sub> to Decimal</p>
+            <p>1101<sub>two</sub> = (1 &times; 2<sup>3</sup>) + (1 &times; 2<sup>2</sup>) + (0 &times; 2<sup>1</sup>) + (1 &times; 2<sup>0</sup>)</p>
+            <p>= (1 &times; 8) + (1 &times; 4) + (0 &times; 2) + (1 &times; 1)</p>
+            <p>= 8 + 4 + 0 + 1 = 13</p>
+            <p>So, 1101<sub>two</sub> = 13<sub>ten</sub>.</p>
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-700 mb-2">Complex Concept: Converting Decimal to Binary (The Division Method)</h3>
+        <p class="mb-4">
+            This is the most reliable way for large numbers: continuously divide the decimal number by 2 and keep track of the remainders. **The binary number is read from the last remainder up to the first!**
+        </p>
+        <div class="code-box">
+            <p class="font-bold">Example: Convert 22<sub>ten</sub> to Binary</p>
+            <p>22 ÷ 2 = 11, Remainder **0**</p>
+            <p>11 ÷ 2 = 5, Remainder **1**</p>
+            <p>5 ÷ 2 = 2, Remainder **1**</p>
+            <p>2 ÷ 2 = 1, Remainder **0**</p>
+            <p>1 ÷ 2 = 0, Remainder **1**</p>
+            <p class="text-xl font-bold mt-2">Read up: 10110<sub>two</sub></p>
+        </div>
+
+        <h3 class="text-2xl font-semibold text-gray-700 mb-2">Interactive Challenge: Decimal to Binary</h3>
+        <div class="interactive-tool" id="binary-converter">
+            <p class="mb-2">Enter a decimal number (0-100) to see its binary equivalent.</p>
+            <div class="flex flex-col space-y-2">
+                <input type="number" id="decimal-input" min="0" max="100" value="44" class="w-full p-2 border-2 border-green-300">
+                <button onclick="convertDecimalToBinary()">Convert to Binary</button>
+            </div>
+            <p id="binary-result" class="feedback text-green-700 mt-3"></p>
+        </div>
+        
+        <h3 class="text-2xl font-semibold text-gray-700 mb-2 mt-6">Binary Addition (The Rules are Different!)</h3>
+        <p class="mb-4">
+            The only rule you need to remember is: **1 + 1 = 10<sub>two</sub>** (which means 0, carry the 1).
+        </p>
+        <div class="code-box">
+            <p class="font-bold">Example: 101<sub>two</sub> + 11<sub>two</sub></p>
+            <p class="font-mono">
+                &nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;1&nbsp; <span class="text-red-600">(Carry)</span><br>
+                &nbsp;&nbsp;1&nbsp;0&nbsp;1<br>
+                +&nbsp;&nbsp;&nbsp;1&nbsp;1<br>
+                -----<br>
+                &nbsp;1&nbsp;0&nbsp;0&nbsp;0
+            </p>
+            <p>1. Right Column: 1 + 1 = 0 (carry 1).</p>
+            <p>2. Middle Column: 0 + 1 + 1 (carry) = 0 (carry 1).</p>
+            <p>3. Left Column: 1 + 0 + 1 (carry) = 0 (carry 1).</p>
+            <p>4. New Column: 0 + 0 + 1 (carry) = 1.</p>
+            <p class="text-xl font-bold mt-2">Answer: 1000<sub>two</sub> (Decimal 8)</p>
+        </div>
+    </div>
+
+
+    <!-- QUIZ SECTION -->
+    <div id="quiz" class="quiz-container">
+        <h2 class="text-3xl concept-title text-orange-800 border-b-orange-500">Test Your Knowledge! (MCQ)</h2>
+        <form id="math-quiz" onsubmit="event.preventDefault(); checkQuizAnswers();">
+            <!-- Pattern Question 1 -->
+            <div class="quiz-question" data-answer="B">1. What is the Common Difference (d) of the sequence: 10, 3, -4, -11, $\dots$?</div>
+            <div class="quiz-answer" data-option="A">A) 7</div>
+            <div class="quiz-answer" data-option="B">B) -7</div>
+            <div class="quiz-answer" data-option="C">C) -3</div>
+
+            <!-- Pattern Question 2 -->
+            <div class="quiz-question" data-answer="A">2. If the General Term is T<sub>n</sub> = 4n - 3, what is the 5th term (T<sub>5</sub>)?</div>
+            <div class="quiz-answer" data-option="A">A) 17</div>
+            <div class="quiz-answer" data-option="B">B) 23</div>
+            <div class="quiz-answer" data-option="C">C) 12</div>
+            
+            <!-- Pattern Question 3 (Advanced) -->
+            <div class="quiz-question" data-answer="C">3. Which term in the sequence 5, 8, 11, $\dots$ is equal to 32?</div>
+            <div class="quiz-answer" data-option="A">A) 9th term</div>
+            <div class="quiz-answer" data-option="B">B) 10th term</div>
+            <div class="quiz-answer" data-option="C">C) 10th term (Hint: T<sub>n</sub>=3n+2)</div>
+            
+            <!-- Binary Question 4 -->
+            <div class="quiz-question" data-answer="B">4. What is the decimal (Base 10) value of the binary number 111<sub>two</sub>?</div>
+            <div class="quiz-answer" data-option="A">A) 6</div>
+            <div class="quiz-answer" data-option="B">B) 7</div>
+            <div class="quiz-answer" data-option="C">C) 111</div>
+            
+            <!-- Binary Question 5 (Advanced) -->
+            <div class="quiz-question" data-answer="A">5. What is the result of the binary addition: 1010<sub>two</sub> + 10<sub>two</sub>?</div>
+            <div class="quiz-answer" data-option="A">A) 1100<sub>two</sub></div>
+            <div class="quiz-answer" data-option="B">B) 1020<sub>two</sub></div>
+            <div class="quiz-answer" data-option="C">C) 1000<sub>two</sub></div>
+
+            <!-- Binary Question 6 (Decimal to Binary) -->
+            <div class="quiz-question" data-answer="C">6. What is the binary (Base 2) equivalent of the decimal number 12<sub>ten</sub>?</div>
+            <div class="quiz-answer" data-option="A">A) 1110<sub>two</sub></div>
+            <div class="quiz-answer" data-option="B">B) 1000<sub>two</sub></div>
+            <div class="quiz-answer" data-option="C">C) 1100<sub>two</sub></div>
+
+
+            <button type="submit" class="mt-4 w-full bg-orange-500 hover:bg-orange-600">Check My Answers</button>
+            <p id="quiz-score" class="feedback text-xl text-center mt-4"></p>
+        </form>
+    </div>
+
+    <!-- JAVASCRIPT FOR INTERACTIVITY -->
+    <script>
+        // --- Pattern Solver (T_n = 4n - 1) ---
+        // Sequence: 3, 7, 11, 15, ...
+        // First Term (a) = 3
+        // Common Difference (d) = 4
+        // General Term: T_n = 3 + (n-1)4 = 3 + 4n - 4 = 4n - 1
+        function calculatePatternTerm() {
+            const n = parseInt(document.getElementById('n-term').value);
+            const resultElement = document.getElementById('pattern-result');
+
+            if (isNaN(n) || n < 1) {
+                resultElement.textContent = "Please enter a positive term number (n).";
+                resultElement.className = 'feedback text-red-600 mt-3';
+                return;
+            }
+
+            // T_n = 4n - 1
+            const Tn = (4 * n) - 1;
+
+            resultElement.innerHTML = `For n=${n}, the term T<sub>n</sub> is: <span class="text-2xl font-bold text-blue-700">${Tn}</span>.`;
+            resultElement.className = 'feedback text-blue-700 mt-3';
+        }
+
+        // --- Decimal to Binary Converter ---
+        function convertDecimalToBinary() {
+            let decimal = parseInt(document.getElementById('decimal-input').value);
+            const resultElement = document.getElementById('binary-result');
+
+            if (isNaN(decimal) || decimal < 0 || decimal > 100) {
+                resultElement.textContent = "Please enter a decimal number between 0 and 100.";
+                resultElement.className = 'feedback text-red-600 mt-3';
+                return;
+            }
+            
+            if (decimal === 0) {
+                resultElement.innerHTML = `Decimal <span class="text-xl font-bold">0</span> is Binary <span class="text-2xl font-bold text-green-700">0</span>.`;
+                resultElement.className = 'feedback text-green-700 mt-3';
+                return;
+            }
+
+            let binary = [];
+            let originalDecimal = decimal;
+
+            while (decimal > 0) {
+                // Get the remainder (0 or 1)
+                const remainder = decimal % 2;
+                binary.unshift(remainder); // Add to the front
+                // Update the number for the next division
+                decimal = Math.floor(decimal / 2); 
+            }
+
+            const binaryString = binary.join('');
+
+            resultElement.innerHTML = `Decimal <span class="text-xl font-bold">${originalDecimal}</span> is Binary <span class="text-2xl font-bold text-green-700">${binaryString}</span>.`;
+            resultElement.className = 'feedback text-green-700 mt-3';
+        }
+
+        // --- Quiz Logic ---
+        const quizAnswers = document.querySelectorAll('.quiz-answer');
+        quizAnswers.forEach(answer => {
+            answer.addEventListener('click', function() {
+                // Get the question container (parent of parent)
+                const questionContainer = this.closest('.quiz-question');
+                
+                // Clear existing selection for this question
+                questionContainer.querySelectorAll('.quiz-answer').forEach(sibling => {
+                    sibling.classList.remove('bg-yellow-200');
+                });
+                
+                // Set new selection
+                this.classList.add('bg-yellow-200');
+                
+                // Store selected option in the question container
+                questionContainer.dataset.selected = this.dataset.option;
+            });
+        });
+
+        function checkQuizAnswers() {
+            let score = 0;
+            const totalQuestions = 6;
+            const questions = document.querySelectorAll('.quiz-question');
+
+            questions.forEach(question => {
+                const correctAnswer = question.dataset.answer;
+                const selectedAnswer = question.dataset.selected;
+                const answers = question.querySelectorAll('.quiz-answer');
+
+                // Clear previous results
+                answers.forEach(a => {
+                    a.classList.remove('correct', 'incorrect', 'bg-yellow-200');
+                });
+
+                if (selectedAnswer) {
+                    answers.forEach(a => {
+                        if (a.dataset.option === selectedAnswer) {
+                            if (selectedAnswer === correctAnswer) {
+                                a.classList.add('correct');
+                                score++;
+                            } else {
+                                a.classList.add('incorrect');
+                            }
+                        }
+                        // Highlight the correct answer if the user got it wrong
+                        if (a.dataset.option === correctAnswer) {
+                             a.classList.add('correct');
+                        }
+                    });
+                } else {
+                    // Highlight correct answer if none selected
+                    answers.forEach(a => {
+                        if (a.dataset.option === correctAnswer) {
+                             a.classList.add('correct');
+                        }
+                    });
+                }
+            });
+
+            const scoreElement = document.getElementById('quiz-score');
+            scoreElement.innerHTML = `You scored <span class="text-orange-800 text-3xl font-bold">${score} out of ${totalQuestions}</span>! Great job!`;
+        }
+    </script>
+</body>
+</html>
