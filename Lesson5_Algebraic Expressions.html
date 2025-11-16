@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algebraic Expressions Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3b82f6; /* Blue 500 */
+            --secondary: #10b981; /* Emerald 500 */
+            --bg-light: #f3f4f6;
+            --bg-dark: #1f2937;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+        }
+        .concept-card {
+            background: white;
+            border-radius: 1.5rem; /* More rounded */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+        .header-title {
+            color: var(--primary);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .quiz-button {
+            background-color: var(--secondary);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .quiz-button:hover {
+            background-color: #059669; /* Emerald 600 */
+            transform: translateY(-1px);
+        }
+        .quiz-button:active {
+            transform: translateY(0);
+        }
+        .correct-answer {
+            background-color: #d1fae5; /* Green 100 */
+            border-color: #10b981;
+        }
+        .incorrect-answer {
+            background-color: #fee2e2; /* Red 100 */
+            border-color: #ef4444;
+        }
+        .math-box {
+            background-color: #e0f2fe; /* Light Blue */
+            border-left: 5px solid var(--primary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 0.5rem;
+            font-weight: 600;
+        }
+        .complex-detail {
+            background-color: #fef3c7; /* Amber 100 */
+            border-left: 5px solid #fbbf24; /* Amber 400 */
+        }
+        .explanation-title {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        .formula {
+            font-style: italic;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        .result-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            font-weight: 700;
+            text-align: center;
+            transition: opacity 0.5s;
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
+
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-10 p-6 rounded-xl bg-white shadow-lg">
+            <h1 class="header-title text-4xl sm:text-5xl font-extrabold mb-2">Algebra Adventure!</h1>
+            <p class="text-gray-600 text-lg">Your interactive lesson on Algebraic Expressions (Grade 9).</p>
+        </header>
+
+        <!-- Lesson Section -->
+        <section id="lesson-content">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-primary pb-2">The Lesson Map <i class="fas fa-map-marker-alt text-primary"></i></h2>
+
+            <!-- Concept 1: Substitution with Directed Numbers -->
+            <div class="concept-card">
+                <h3 class="text-2xl font-bold text-secondary mb-4">1. The Power of Substitution (Even with Hard Numbers!)</h3>
+                <p class="mb-4">You've substituted whole numbers before, but now we're leveling up! We'll use **directed numbers**—that means fractions (<span class="formula">1/2</span>) and negative numbers (<span class="formula">-3</span>).</p>
+
+                <div class="math-box">
+                    <div class="explanation-title">The Rule:</div>
+                    <p>Simply replace the variable with the given value. Remember your rules for multiplying and adding fractions and negatives!</p>
+                </div>
+
+                <h4 class="text-xl font-semibold mt-6 mb-3 text-gray-700 complex-detail p-3">Complex Concept Deep Dive: Negative Fractions</h4>
+                <p class="mb-3">When you have a negative fraction, like <span class="formula">b = -2/3</span>, the negative sign applies to the whole fraction. When you multiply it, remember: **Negative × Positive = Negative**, and **Negative × Negative = Positive**.</p>
+                
+                <div class="math-box">
+                    <div class="explanation-title">Example: Find the value of <span class="formula">5 - 6b</span> when <span class="formula">b = -2/3</span>.</div>
+                    <p>1. **Substitute:** <span class="formula">5 - 6 * (-2/3)</span></p>
+                    <p>2. **Multiply:** <span class="formula">-6 * (-2/3)</span>. The two negatives cancel, making it positive. <span class="formula">6 * 2 / 3 = 12 / 3 = 4</span>.</p>
+                    <p>3. **Calculate:** <span class="formula">5 + 4 = 9</span>.</p>
+                </div>
+            </div>
+
+            <!-- Concept 2: Expanding the Product of Two Binomial Expressions -->
+            <div class="concept-card">
+                <h3 class="text-2xl font-bold text-secondary mb-4">2. The FOIL Method: Multiplying Binomials</h3>
+                <p class="mb-4">Multiplying two binomials like <span class="formula">(x+3)(x+2)</span> is like opening a combination lock. Every term in the first lock has to pair up with every term in the second lock! We use the **FOIL** method to make sure we don't miss anything.</p>
+
+                <div class="math-box complex-detail">
+                    <div class="explanation-title">What is FOIL?</div>
+                    <ul class="list-disc ml-6">
+                        <li>**F**irst: Multiply the **First** terms: <span class="formula">x * x = x²</span></li>
+                        <li>**O**uter: Multiply the **Outer** terms: <span class="formula">x * 2 = 2x</span></li>
+                        <li>**I**nner: Multiply the **Inner** terms: <span class="formula">3 * x = 3x</span></li>
+                        <li>**L**ast: Multiply the **Last** terms: <span class="formula">3 * 2 = 6</span></li>
+                    </ul>
+                    <p class="mt-2">Then, add them all up and simplify: <span class="formula">x² + 2x + 3x + 6 = x² + 5x + 6</span>.</p>
+                </div>
+
+                <h4 class="text-xl font-semibold mt-6 mb-3 text-gray-700">Detailed Example: Dealing with Negatives</h4>
+                <p class="mb-3">The toughest part is handling the negative signs! Keep track of them carefully.</p>
+                
+                <div class="math-box">
+                    <div class="explanation-title">Example: Expand <span class="formula">(x - 5)(x + 3)</span></div>
+                    <p>F: <span class="formula">x * x = x²</span></p>
+                    <p>O: <span class="formula">x * 3 = 3x</span></p>
+                    <p>I: <span class="formula">-5 * x = -5x</span> <span class="text-red-600 font-bold">(Watch the negative!)</span></p>
+                    <p>L: <span class="formula">-5 * 3 = -15</span> <span class="text-red-600 font-bold">(Negative * Positive = Negative)</span></p>
+                    <p class="mt-2 font-extrabold">Combine: <span class="formula">x² + 3x - 5x - 15 = x² - 2x - 15</span>.</p>
+                </div>
+            </div>
+
+            <!-- Concept 3: Geometric Verification -->
+            <div class="concept-card">
+                <h3 class="text-2xl font-bold text-secondary mb-4">3. Geometry Check: Area of a Rectangle</h3>
+                <p class="mb-4">Why does FOIL work? Because algebra is just a way to talk about shapes! The product of two binomials is exactly the same as finding the **Area** of a larger rectangle.</p>
+                
+                <div class="math-box complex-detail">
+                    <div class="explanation-title">The Area Model for <span class="formula">(x + 3)(x + 2)</span></div>
+                    <p>Imagine a rectangle with: <br>Length = <span class="formula">(x + 3)</span> and Breadth = <span class="formula">(x + 2)</span>. </p>
+                    <p class="mt-3">The total area is divided into 4 smaller areas:</p>
+                    <ul class="list-disc ml-6">
+                        <li>**1st Area (Square):** <span class="formula">x * x = x²</span></li>
+                        <li>**2nd Area (Rectangle):** <span class="formula">x * 2 = 2x</span></li>
+                        <li>**3rd Area (Rectangle):** <span class="formula">3 * x = 3x</span></li>
+                        <li>**4th Area (Small Rectangle):** <span class="formula">3 * 2 = 6</span></li>
+                    </ul>
+                    <p class="mt-2">Total Area = <span class="formula">x² + 2x + 3x + 6 = x² + 5x + 6</span>. It matches the FOIL result! **Algebra = Geometry!**</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Section -->
+        <section id="quiz-section" class="mt-10 p-6 concept-card bg-gray-50">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b-2 border-secondary pb-2">Test Your Knowledge! <i class="fas fa-rocket text-secondary"></i></h2>
+            <form id="quiz-form">
+                
+                <!-- Q1: Substitution (Fraction) -->
+                <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold mb-3">1. Find the value of <span class="formula">2x + 3</span> when <span class="formula">x = 1/2</span>.</p>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q1" value="a" class="mr-2"> 4
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q1" value="b" class="mr-2"> 5/2
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q1" value="c" class="mr-2"> 2
+                    </label>
+                    <p id="feedback-q1" class="result-message opacity-0"></p>
+                </div>
+
+                <!-- Q2: Substitution (Negative) -->
+                <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold mb-3">2. If <span class="formula">y = -3</span>, what is the value of <span class="formula">-4(y - 2)</span>?</p>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q2" value="a" class="mr-2"> -4
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q2" value="b" class="mr-2"> 20
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q2" value="c" class="mr-2"> -20
+                    </label>
+                    <p id="feedback-q2" class="result-message opacity-0"></p>
+                </div>
+
+                <!-- Q3: Binomial Expansion (Simple) -->
+                <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold mb-3">3. Expand and simplify: <span class="formula">(x + 4)(x + 2)</span></p>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q3" value="a" class="mr-2"> x² + 6x + 8
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q3" value="b" class="mr-2"> x² + 8x + 6
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q3" value="c" class="mr-2"> x² + 4x + 2
+                    </label>
+                    <p id="feedback-q3" class="result-message opacity-0"></p>
+                </div>
+
+                <!-- Q4: Binomial Expansion (Negatives) -->
+                <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold mb-3">4. Expand and simplify: <span class="formula">(m - 5)(m + 3)</span></p>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q4" value="a" class="mr-2"> m² - 2m - 15
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q4" value="b" class="mr-2"> m² + 2m - 15
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q4" value="c" class="mr-2"> m² - 8m + 15
+                    </label>
+                    <p id="feedback-q4" class="result-message opacity-0"></p>
+                </div>
+
+                <!-- Q5: Geometric Concept -->
+                <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold mb-3">5. The expression <span class="formula">(x - 2)(x - 3)</span> represents the area of a rectangle. What are its side lengths?</p>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q5" value="a" class="mr-2"> x and 6
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q5" value="b" class="mr-2"> x - 2 and x - 3
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q5" value="c" class="mr-2"> x + 2 and x + 3
+                    </label>
+                    <p id="feedback-q5" class="result-message opacity-0"></p>
+                </div>
+                
+                <h3 class="text-2xl font-bold text-gray-800 mt-10 mb-6 border-b-2 border-primary pb-2">Advanced Challenge Questions <i class="fas fa-medal text-primary"></i></h3>
+
+                <!-- Q6: NEW Shaded Area (Square Frame/Path) -->
+                <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold mb-3">6. A large square field has side length <span class="formula">(2x + 5)</span>. A square garden inside it has side length <span class="formula">(2x + 3)</span>. What is the simplified expression for the area of the path surrounding the garden?</p>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q6" value="a" class="mr-2"> 4x + 16
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q6" value="b" class="mr-2"> 8x + 16
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q6" value="c" class="mr-2"> 2x² + 4x + 7
+                    </label>
+                    <p id="feedback-q6" class="result-message opacity-0"></p>
+                </div>
+
+                <!-- Q7: Shaded Area (Frame) - From PDF Fig 2 -->
+                <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold mb-3">7. The red 'frame' area (Outer: <span class="formula">(x + 8)(x + 5)</span> minus Inner: <span class="formula">(x + 2)(x + 1)</span>). What is the simplified expression for the shaded (frame) area?</p>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q7" value="a" class="mr-2"> x² + 13x + 40
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q7" value="b" class="mr-2"> 10x + 38
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q7" value="c" class="mr-2"> 13x + 39
+                    </label>
+                    <p id="feedback-q7" class="result-message opacity-0"></p>
+                </div>
+
+                <!-- Q8: Finding Unknown Coefficients - From PDF Misc Ex 2 -->
+                <div class="mb-6 p-4 border rounded-lg bg-white shadow-sm">
+                    <p class="font-semibold mb-3">8. If <span class="formula">(x + a)(x + 4) = x² + bx + 12</span>, what are the values of **a** and **b**?</p>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q8" value="a" class="mr-2"> a = 3, b = 7
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q8" value="b" class="mr-2"> a = 4, b = 8
+                    </label>
+                    <label class="block mb-2 p-2 border rounded cursor-pointer hover:bg-blue-50">
+                        <input type="radio" name="q8" value="c" class="mr-2"> a = 7, b = 3
+                    </label>
+                    <p id="feedback-q8" class="result-message opacity-0"></p>
+                </div>
+
+
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <button type="button" onclick="checkAnswers()" class="quiz-button text-white font-bold py-3 px-6 rounded-xl w-full sm:w-1/2">
+                        <i class="fas fa-check-circle"></i> Check My Answers
+                    </button>
+                    <button type="reset" onclick="resetQuiz()" class="bg-gray-400 text-white font-bold py-3 px-6 rounded-xl w-full sm:w-1/2 hover:bg-gray-500 transition duration-200">
+                        <i class="fas fa-redo"></i> Reset Quiz
+                    </button>
+                </div>
+
+                <div id="final-score" class="result-message mt-6 text-xl text-gray-800 border-2 border-dashed border-gray-300 opacity-0"></div>
+
+            </form>
+        </section>
+
+    </div>
+
+    <script>
+        const correctAnswers = {
+            q1: 'a', // 2*(1/2) + 3 = 1 + 3 = 4
+            q2: 'b', // -4*(-3 - 2) = -4*(-5) = 20
+            q3: 'a', // x^2 + 2x + 4x + 8 = x^2 + 6x + 8
+            q4: 'a', // m^2 + 3m - 5m - 15 = m^2 - 2m - 15
+            q5: 'b', // The definition of product of two binomials
+            // Advanced Questions Answers:
+            // Q6: (2x+5)^2 - (2x+3)^2 = (4x^2 + 20x + 25) - (4x^2 + 12x + 9) = 8x + 16
+            q6: 'b',
+            // Q7: (x^2 + 13x + 40) - (x^2 + 3x + 2) = 10x + 38
+            q7: 'b', 
+            // Q8: (x+a)(x+4) = x^2 + (4+a)x + 4a. If 4a=12, a=3. If 4+a=b, then 4+3=7, b=7.
+            q8: 'a'  
+        };
+
+        const feedbackElements = {
+            q1: document.getElementById('feedback-q1'),
+            q2: document.getElementById('feedback-q2'),
+            q3: document.getElementById('feedback-q3'),
+            q4: document.getElementById('feedback-q4'),
+            q5: document.getElementById('feedback-q5'),
+            q6: document.getElementById('feedback-q6'),
+            q7: document.getElementById('feedback-q7'),
+            q8: document.getElementById('feedback-q8')
+        };
+        
+        function getFeedback(isCorrect) {
+            return isCorrect ? 
+                '<i class="fas fa-thumbs-up"></i> Correct! Well done.' : 
+                '<i class="fas fa-times-circle"></i> Oops! Review the lesson on that topic.';
+        }
+
+        function checkAnswers() {
+            let score = 0;
+            const form = document.getElementById('quiz-form');
+            // Updated list of questions including the new ones (q6, q7, q8)
+            const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+
+            questions.forEach(qName => {
+                const selected = form.querySelector(`input[name="${qName}"]:checked`);
+                const feedbackEl = feedbackElements[qName];
+                const parentDiv = feedbackEl.closest('.p-4');
+                
+                // Reset styling
+                form.querySelectorAll(`input[name="${qName}"]`).forEach(input => {
+                    input.parentElement.classList.remove('correct-answer', 'incorrect-answer', 'border-red-500', 'border-green-500');
+                    input.parentElement.classList.add('border');
+                });
+
+                if (selected) {
+                    const isCorrect = selected.value === correctAnswers[qName];
+                    feedbackEl.innerHTML = getFeedback(isCorrect);
+                    feedbackEl.classList.remove('opacity-0');
+                    feedbackEl.style.opacity = '1';
+
+                    parentDiv.classList.remove('bg-white');
+                    if (isCorrect) {
+                        score++;
+                        parentDiv.classList.add('correct-answer');
+                        parentDiv.classList.remove('incorrect-answer');
+                        selected.parentElement.classList.add('border-green-500');
+                    } else {
+                        parentDiv.classList.add('incorrect-answer');
+                        parentDiv.classList.remove('correct-answer');
+                        selected.parentElement.classList.add('border-red-500');
+                        // Highlight the correct answer
+                        form.querySelector(`input[name="${qName}"][value="${correctAnswers[qName]}"]`).parentElement.classList.add('correct-answer', 'border-green-500');
+                    }
+                } else {
+                    feedbackEl.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please select an answer.';
+                    feedbackEl.classList.add('incorrect-answer');
+                    feedbackEl.classList.remove('opacity-0', 'correct-answer');
+                    feedbackEl.style.opacity = '1';
+                }
+            });
+
+            const finalScore = document.getElementById('final-score');
+            finalScore.innerHTML = `You scored ${score} out of ${questions.length}! Keep practicing!`;
+            finalScore.style.opacity = '1';
+
+            if (score === questions.length) {
+                finalScore.classList.add('bg-secondary', 'text-white', 'shadow-xl');
+                finalScore.classList.remove('border-gray-300');
+            } else {
+                finalScore.classList.remove('bg-secondary', 'text-white', 'shadow-xl');
+                finalScore.classList.add('bg-yellow-100');
+            }
+        }
+
+        function resetQuiz() {
+            // Updated list of questions including the new ones (q6, q7, q8)
+            const questions = ['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7', 'q8'];
+            questions.forEach(qName => {
+                const feedbackEl = feedbackElements[qName];
+                const parentDiv = feedbackEl.closest('.p-4');
+
+                feedbackEl.innerHTML = '';
+                feedbackEl.style.opacity = '0';
+
+                parentDiv.classList.remove('correct-answer', 'incorrect-answer', 'border-red-500', 'border-green-500');
+                parentDiv.classList.add('bg-white');
+
+                // Clear input styling
+                document.getElementById('quiz-form').querySelectorAll(`input[name="${qName}"]`).forEach(input => {
+                    input.parentElement.classList.remove('correct-answer', 'incorrect-answer', 'border-red-500', 'border-green-500');
+                    input.parentElement.classList.add('border');
+                });
+            });
+
+            const finalScore = document.getElementById('final-score');
+            finalScore.innerHTML = '';
+            finalScore.style.opacity = '0';
+            finalScore.classList.remove('bg-secondary', 'text-white', 'shadow-xl', 'bg-yellow-100');
+            finalScore.classList.add('border-dashed');
+        }
+    </script>
+</body>
+</html>
