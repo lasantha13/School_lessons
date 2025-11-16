@@ -63,6 +63,13 @@
         .header-bg {
             background-color: #10b981; /* Emerald */
         }
+        .math-text {
+            font-family: 'Inter', sans-serif; /* Ensuring readability */
+            font-size: 1.125rem; /* text-lg */
+            font-weight: 800; /* Extra bold */
+            padding: 0.5rem 0;
+            display: block;
+        }
     </style>
 </head>
 <body class="p-4 md:p-10">
@@ -86,11 +93,11 @@
 
             <div class="formula">
                 <p>💸 **PROFIT** happens when: Selling Price > Cost</p>
-                $$\text{Profit} = \text{Selling Price} - \text{Cost}$$
+                <span class="math-text">Profit = Selling Price - Cost</span>
             </div>
             <div class="formula mt-4 bg-red-100 border-red-500">
                 <p>📉 **LOSS** happens when: Cost > Selling Price</p>
-                $$\text{Loss} = \text{Cost} - \text{Selling Price}$$
+                <span class="math-text">Loss = Cost - Selling Price</span>
             </div>
 
             <!-- Interactive Calculator 1 -->
@@ -121,7 +128,7 @@
             </p>
 
             <div class="formula">
-                $$\text{Profit \%} = \frac{\text{Profit}}{\text{Cost}} \times 100\%$$
+                <span class="math-text">Profit % = (Profit / Cost) × 100%</span>
                 <span class="text-xs italic text-gray-700">Always calculated on the Cost Price!</span>
             </div>
 
@@ -160,7 +167,7 @@
                         A discount is a reduction from the **Marked Price** (the sticker price). The customer pays less!
                     </p>
                     <div class="formula bg-white border-green-500 text-sm">
-                        $$\text{Discount} = \text{Marked Price} \times \frac{\text{Discount \%}}{100}$$
+                        <span class="math-text">Discount = Marked Price × (Discount % / 100)</span>
                     </div>
                     <label class="block mt-4">
                         <span class="text-sm text-gray-700">Marked Price: Rs 2000</span>
@@ -177,7 +184,7 @@
                         A commission is a fee paid to a broker/sales agent, calculated on the **Total Sale Value**.
                     </p>
                     <div class="formula bg-white border-orange-500 text-sm">
-                        $$\text{Commission} = \text{Sale Value} \times \frac{\text{Commission \%}}{100}$$
+                        <span class="math-text">Commission = Sale Value × (Commission % / 100)</span>
                     </div>
                     <label class="block mt-4">
                         <span class="text-sm text-gray-700">House Sale Value: Rs 5,000,000</span>
