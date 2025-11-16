@@ -1,1 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Mastery: Patterns & Binary</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Use Inter font family -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f7f7;
+            min-height: 100vh;
+        }
+        /* Custom scrollbar for better look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #e0e0e0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #60a5fa;
+            border-radius: 4px;
+        }
+        .lesson-card {
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .lesson-card:hover {
+            transform: translateY(-3px);
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+        }
+        .btn-primary:active {
+            transform: scale(0.98);
+        }
+        .quiz-option {
+            cursor: pointer;
+            transition: background-color 0.15s, border-color 0.15s;
+        }
+        .quiz-option.correct {
+            background-color: #d1fae5; /* Green 100 */
+            border-color: #10b981; /* Green 500 */
+            font-weight: 600;
+        }
+        .quiz-option.incorrect {
+            background-color: #fee2e2; /* Red 100 */
+            border-color: #ef4444; /* Red 500 */
+        }
+    </style>
+</head>
+<body class="p-4 sm:p-8">
 
+    <div class="max-w-4xl mx-auto">
+        <header class="text-center mb-10 p-6 bg-white rounded-xl shadow-lg">
+            <h1 class="text-4xl font-extrabold text-blue-600 mb-2">🚀 Math Explorer Workshop</h1>
+            <p class="text-lg text-gray-600">Interactive Lessons on Number Patterns and Binary</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <div class="flex flex-wrap justify-center mb-8 gap-3">
+            <button onclick="showSection('patterns')" class="btn-primary" id="btn-patterns">
+                1. Number Patterns
+            </button>
+            <button onclick="showSection('binary')" class="btn-primary" id="btn-binary">
+                2. Binary Numbers
+            </button>
+            <button onclick="showSection('quiz')" class="btn-primary bg-yellow-500 hover:bg-yellow-600" id="btn-quiz">
+                3. Knowledge Check Quiz
+            </button>
+        </div>
+
+        <!-- Lesson 1: Number Patterns -->
+        <section id="patterns-section" class="lesson-card bg-white p-6 sm:p-8 rounded-2xl hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Lesson 1: The Magic of Number Patterns</h2>
+            
+            <div class="space-y-6">
+                
+                <!-- Concept 1: Sequences and Terms -->
+                <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-2">Part A: What's a Sequence?</h3>
+                    <p class="text-gray-700">A **Sequence** is just a list of numbers in a specific order. Each number in the list is called a **Term** (T).</p>
+                    <div class="bg-white p-3 mt-3 rounded shadow-sm">
+                        <p class="font-mono text-lg text-red-600">Example: <span class="text-blue-600">5</span>, <span class="text-blue-600">8</span>, <span class="text-blue-600">11</span>, <span class="text-blue-600">14</span>, ...</p>
+                        <ul class="list-disc list-inside text-sm text-gray-600">
+                            <li>T₁ (1st term) = 5</li>
+                            <li>T₂ (2nd term) = 8</li>
+                            <li>T₃ (3rd term) = 11</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Concept 2: Common Difference -->
+                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Part B: The Constant Step (Common Difference)</h3>
+                    <p class="text-gray-700">In many patterns, you add the same fixed number to get from one term to the next. This number is called the **Common Difference** (d).</p>
+                    <p class="font-bold mt-2">Formula: d = Tₙ - Tₙ₋₁</p>
+                    
+                    <div class="bg-white p-3 mt-3 rounded shadow-sm">
+                        <p class="font-mono text-lg text-red-600">Sequence: 10, 8, 6, 4, ...</p>
+                        <p class="text-sm mt-1">Common Difference (d) = 8 - 10 = -2. You are **adding -2** (or subtracting 2) each time.</p>
+                    </div>
+                </div>
+
+                <!-- Concept 3: General Term (The Difficult Concept Explained) -->
+                <div class="p-4 bg-red-50 rounded-lg border border-red-200">
+                    <h3 class="text-xl font-semibold text-red-700 mb-2">Part C: The Superpower Formula (The General Term, Tₙ)</h3>
+                    <p class="font-bold text-lg text-red-800">Why is this complex?</p>
+                    <p class="text-gray-700">We need a single rule to find the 50th or 1000th term without listing them all. This rule is the **General Term** (Tₙ).</p>
+                    
+                    <p class="font-bold text-lg mt-4 text-red-800">The Secret: It's like a times-table!</p>
+                    <p class="text-gray-700">Look at the sequence **5, 11, 17, 23, ...**</p>
+                    <ul class="list-disc list-inside text-gray-700 ml-4">
+                        <li>The Common Difference (d) is **6**.</li>
+                        <li>This means Tₙ will start with 6n (like the 6-times table: 6, 12, 18, 24, ...).</li>
+                        <li>**Compare:**
+                            <ul>
+                                <li>T₁ is 5, but 6×1 is 6. (6-1=5)</li>
+                                <li>T₂ is 11, but 6×2 is 12. (12-1=11)</li>
+                                <li>T₃ is 17, but 6×3 is 18. (18-1=17)</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <p class="mt-3 text-2xl font-extrabold text-green-600 text-center bg-green-100 p-3 rounded-lg">The General Term: Tₙ = 6n - 1</p>
+
+                    <p class="text-gray-700 mt-4">You can also use the formal formula, but the 'times-table' method is often easier!</p>
+                    <div class="bg-gray-100 p-3 mt-3 rounded-lg">
+                        <p class="font-semibold text-gray-700 mb-2">Formal Formula:</p>
+                        <p class="text-xl text-center">Tₙ = a + (n-1)d</p>
+                        <p class="text-sm">Where a = T₁ (the first term) and d is the common difference.</p>
+                    </div>
+                </div>
+
+                <!-- Exercise 1.1 Style (Finding Terms from Tₙ) -->
+                <div class="p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-2">Exercise 1.1: Finding Terms from Tₙ</h3>
+                    <p class="text-gray-700 mb-4">The General Term is given by: **Tₙ = 4n - 3**. Find the following terms:</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <label for="p1-t1" class="w-16 font-bold">T₁:</label>
+                            <input type="number" id="p1-t1" placeholder="T₁" class="p-2 border border-indigo-300 rounded-lg w-full">
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label for="p1-t5" class="w-16 font-bold">T₅:</label>
+                            <input type="number" id="p1-t5" placeholder="T₅" class="p-2 border border-indigo-300 rounded-lg w-full">
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label for="p1-t12" class="w-16 font-bold">T₁₂:</label>
+                            <input type="number" id="p1-t12" placeholder="T₁₂" class="p-2 border border-indigo-300 rounded-lg w-full">
+                        </div>
+                        <button onclick="checkPatternTerms()" class="btn-primary bg-indigo-500 hover:bg-indigo-600 w-full mt-3">Check Terms</button>
+                    </div>
+                    <p id="p1-feedback" class="mt-3 font-bold text-center"></p>
+                </div>
+
+                <!-- Exercise 1.2 Style (Finding Tₙ from Sequence) -->
+                <div class="p-4 bg-purple-50 rounded-lg border border-purple-200 mt-6">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Exercise 1.2: Finding the General Term (Tₙ)</h3>
+                    <p class="text-gray-700 mb-4">The sequence is: **1, 7, 13, 19, ...** Find the Common Difference (d) and the Constant (c) to form Tₙ = dn + c.</p>
+                    <div class="space-y-3">
+                        <div class="flex items-center space-x-2">
+                            <label for="p2-d" class="w-32 font-bold">Difference (d):</label>
+                            <input type="number" id="p2-d" placeholder="Common Difference" class="p-2 border border-purple-300 rounded-lg w-full">
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <label for="p2-c" class="w-32 font-bold">Constant (c):</label>
+                            <input type="number" id="p2-c" placeholder="Constant offset" class="p-2 border border-purple-300 rounded-lg w-full">
+                        </div>
+                        <button onclick="checkGeneralTerm()" class="btn-primary bg-purple-500 hover:bg-purple-600 w-full mt-3">Check Tₙ (dn + c)</button>
+                    </div>
+                    <p id="p2-feedback" class="mt-3 font-bold text-center"></p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Lesson 2: Binary Numbers -->
+        <section id="binary-section" class="lesson-card bg-white p-6 sm:p-8 rounded-2xl hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Lesson 2: Binary Numbers (The Language of Computers)</h2>
+            
+            <div class="space-y-6">
+
+                <!-- Concept 1: Base 10 vs Base 2 -->
+                <div class="p-4 bg-blue-50 rounded-lg border border-blue-200">
+                    <h3 class="text-xl font-semibold text-blue-700 mb-2">Part A: Why Base 2? (0s and 1s)</h3>
+                    <p class="text-gray-700">The world of computers only understands **ON (1)** and **OFF (0)**. This is why they use **Base 2**, or **Binary Numbers**.</p>
+                    <div class="bg-white p-3 mt-3 rounded shadow-sm">
+                        <p class="font-bold mb-1">Decimal (Base 10):</p>
+                        <p class="font-mono text-lg text-green-600">3,725 = (3 × 10³) + (7 × 10²) + (2 × 10¹) + (5 × 10⁰)</p>
+                        <p class="font-bold mt-3 mb-1">Binary (Base 2):</p>
+                        <p class="font-mono text-lg text-red-600">1101₂ = (1 × 2³) + (1 × 2²) + (0 × 2¹) + (1 × 2⁰)</p>
+                        <p class="text-sm text-gray-600 mt-2">The place values are powers of 2: **... 64, 32, 16, 8, 4, 2, 1**</p>
+                    </div>
+                </div>
+
+                <!-- Concept 2: Decimal to Binary (The Difficult Concept Explained) -->
+                <div class="p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                    <h3 class="text-xl font-semibold text-yellow-700 mb-2">Part B: Converting from Base 10 to Base 2</h3>
+                    <p class="font-bold text-lg text-yellow-800">The Trick: Repeated Division by 2</p>
+                    <p class="text-gray-700">We keep dividing the number by 2 and write down the **remainder**. The binary number is formed by reading the remainders from **BOTTOM to TOP**.</p>
+                    
+                    <div class="bg-white p-3 mt-3 rounded shadow-sm">
+                        <p class="font-mono text-lg text-red-600 mb-2">Example: Convert 13 (Base 10) to Binary</p>
+                        <pre class="text-sm bg-gray-100 p-2 rounded-lg font-mono">
+2 | 13   Remainder: **1**
+2 | 6    Remainder: **0**
+2 | 3    Remainder: **1**
+2 | 1    Remainder: **1**
+  | 0
+                        </pre>
+                        <p class="mt-3 text-2xl font-extrabold text-green-600 text-center">Result: 1101₂</p>
+                    </div>
+                </div>
+
+                <!-- Concept 3: Binary Arithmetic -->
+                <div class="p-4 bg-red-50 rounded-lg border border-red-200">
+                    <h3 class="text-xl font-semibold text-red-700 mb-2">Part C: Binary Arithmetic (The Carry Rules)</h3>
+                    <p class="text-gray-700">The rules are simple, but you must remember the 'carry'!</p>
+                    <div class="flex justify-around mt-3">
+                        <div class="text-center p-3 bg-white rounded-lg shadow-md">
+                            <p class="font-mono text-xl text-green-600">Addition Rules</p>
+                            <ul class="font-mono mt-2 text-sm text-gray-700 list-none p-0">
+                                <li>0 + 0 = 0</li>
+                                <li>1 + 0 = 1</li>
+                                <li>1 + 1 = 0 (carry 1) <span class="text-red-500">(This is 10₂)</span></li>
+                                <li>1 + 1 + 1 = 1 (carry 1) <span class="text-red-500">(This is 11₂)</span></li>
+                            </ul>
+                        </div>
+                        <div class="text-center p-3 bg-white rounded-lg shadow-md">
+                            <p class="font-mono text-xl text-green-600">Subtraction Rules</p>
+                            <ul class="font-mono mt-2 text-sm text-gray-700 list-none p-0">
+                                <li>1 - 0 = 1</li>
+                                <li>0 - 0 = 0</li>
+                                <li>10 - 1 = 1 (Borrow 1 from the next column)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 mt-4 italic">Just like in base 10, when you borrow 1 in binary, the value you are borrowing is 2.</p>
+                </div>
+                
+                <!-- Exercise 2.1/2.2 Style: Conversions -->
+                <div class="p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                    <h3 class="text-xl font-semibold text-indigo-700 mb-2">Exercise 2.1: Conversions</h3>
+                    
+                    <p class="font-semibold mt-4">A. Convert $43_{10}$ to Binary:</p>
+                    <div class="flex items-center space-x-4 mt-2">
+                        <input type="text" id="b1-binary" placeholder="Enter Base 2 answer (e.g., 101011)" class="p-2 border border-indigo-300 rounded-lg w-full">
+                        <button onclick="checkDecimalToBinary()" class="btn-primary bg-indigo-500 hover:bg-indigo-600 w-full sm:w-auto flex-shrink-0">Check Binary</button>
+                    </div>
+                    <p id="b1-feedback" class="mt-3 font-bold text-center"></p>
+
+                    <p class="font-semibold mt-4">B. Convert $110111_2$ to Decimal:</p>
+                    <div class="flex items-center space-x-4 mt-2">
+                        <input type="number" id="b2-decimal" placeholder="Enter Base 10 answer" class="p-2 border border-indigo-300 rounded-lg w-full">
+                        <button onclick="checkBinaryToDecimal()" class="btn-primary bg-indigo-500 hover:bg-indigo-600 w-full sm:w-auto flex-shrink-0">Check Decimal</button>
+                    </div>
+                    <p id="b2-feedback" class="mt-3 font-bold text-center"></p>
+                </div>
+
+                <!-- Exercise 2.3/2.4 Style: Binary Arithmetic -->
+                <div class="p-4 bg-purple-50 rounded-lg border border-purple-200 mt-6">
+                    <h3 class="text-xl font-semibold text-purple-700 mb-2">Exercise 2.2: Binary Arithmetic</h3>
+                    
+                    <p class="font-semibold mt-4">A. Addition: $1110_{2} + 111_{2}$</p>
+                    <div class="flex items-center space-x-4 mt-2">
+                        <input type="text" id="b3-add" placeholder="Enter Base 2 sum" class="p-2 border border-purple-300 rounded-lg w-full">
+                        <button onclick="checkBinaryAddition()" class="btn-primary bg-purple-500 hover:bg-purple-600 w-full sm:w-auto flex-shrink-0">Check Sum</button>
+                    </div>
+                    <p id="b3-feedback" class="mt-3 font-bold text-center"></p>
+
+                    <p class="font-semibold mt-4">B. Subtraction: $1100_{2} - 111_{2}$</p>
+                    <div class="flex items-center space-x-4 mt-2">
+                        <input type="text" id="b4-subtract" placeholder="Enter Base 2 difference" class="p-2 border border-purple-300 rounded-lg w-full">
+                        <button onclick="checkBinarySubtraction()" class="btn-primary bg-purple-500 hover:bg-purple-600 w-full sm:w-auto flex-shrink-0">Check Difference</button>
+                    </div>
+                    <p id="b4-feedback" class="mt-3 font-bold text-center"></p>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Lesson 3: Multiple-Select Quiz (MSQ) -->
+        <section id="quiz-section" class="lesson-card bg-white p-6 sm:p-8 rounded-2xl hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 border-b pb-2">Lesson 3: Knowledge Check Quiz</h2>
+            
+            <div id="quiz-container" class="space-y-6">
+                <!-- Quiz questions will be dynamically inserted here -->
+            </div>
+            
+            <div class="mt-8 text-center">
+                <button onclick="submitQuiz()" class="btn-primary bg-green-500 hover:bg-green-600 text-lg" id="submit-btn">
+                    Submit Quiz & Get Score
+                </button>
+                <div id="quiz-score" class="mt-4 text-3xl font-bold text-blue-600 hidden"></div>
+                <button onclick="resetQuiz()" class="btn-primary bg-gray-400 hover:bg-gray-500 mt-4 text-sm hidden" id="reset-btn">
+                    Try Again
+                </button>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // --- Core Quiz Data (12 Questions) ---
+        const quizQuestions = [
+            {
+                question: "Question 1: What is the 'Common Difference' (d) for the number pattern 14, 11, 8, 5, ...?",
+                options: ["3", "-3", "14", "5"],
+                answer: "B",
+                correctIndex: 1,
+            },
+            {
+                question: "Question 2: If the General Term is Tₙ = 5n - 2, what is the 4th term (T₄)?",
+                options: ["13", "18", "22", "15"],
+                answer: "B", // 5(4) - 2 = 18
+                correctIndex: 1,
+            },
+            {
+                question: "Question 3: What does the binary number 1010₂ represent in Base 10 (Decimal)?",
+                options: ["8", "10", "12", "5"],
+                answer: "B",
+                correctIndex: 1,
+            },
+            {
+                question: "Question 4: Convert the decimal number 7 to its binary equivalent.",
+                options: ["101₂", "110₂", "111₂", "100₂"],
+                answer: "C",
+                correctIndex: 2,
+            },
+            {
+                question: "Question 5: What is the result of the binary addition 11₂ + 1₂?",
+                options: ["10₂", "110₂", "100₂", "111₂"],
+                answer: "C", // 11 + 1 = 100
+                correctIndex: 2,
+            },
+            {
+                question: "Question 6: In the binary number system, what is the largest digit you can use?",
+                options: ["2", "9", "1", "0"],
+                answer: "C",
+                correctIndex: 2,
+            },
+            {
+                question: "Question 7: If the General Term is Tₙ = 3n + 2, which term number (n) is equal to 32?",
+                options: ["9th term", "10th term", "11th term", "32nd term"],
+                answer: "B", // 3n + 2 = 32 -> 3n = 30 -> n = 10
+                correctIndex: 1,
+            },
+            {
+                question: "Question 8: What is the General Term (Tₙ) for the decreasing sequence 22, 19, 16, 13, ...?",
+                options: ["3n - 19", "25 - 3n", "22 - 3n", "3n + 22"],
+                answer: "B", // d = -3. Tₙ = -3n + (22 - (-3)) = 25 - 3n
+                correctIndex: 1,
+            },
+            {
+                question: "Question 9: What is the result of the binary addition 111₂ + 101₂?",
+                options: ["110₂", "1010₂", "1100₂", "1001₂"],
+                answer: "C", // 7 + 5 = 12. 12 = 1100₂
+                correctIndex: 2,
+            },
+            {
+                question: "Question 10: What is the result of the binary subtraction 1000₂ - 1₂?",
+                options: ["101₂", "110₂", "111₂", "100₂"],
+                answer: "C", // 8 - 1 = 7. 7 = 111₂
+                correctIndex: 2,
+            },
+            {
+                question: "Question 11: A long-distance runner runs 500m on Day 1 and adds 100m each day. How far does he run on Day 3?",
+                options: ["500m", "600m", "700m", "800m"],
+                answer: "C", // 500, 600, 700
+                correctIndex: 2,
+            },
+            {
+                question: "Question 12: In a binary number, what power of 2 represents the fourth position counting from the right ($2^0, 2^1, ...$)?",
+                options: ["2⁰", "2²", "2³", "2⁴"],
+                answer: "C", // 1st is 2⁰, 2nd is 2¹, 3rd is 2², 4th is 2³
+                correctIndex: 2,
+            }
+        ];
+
+        let userAnswers = {};
+
+        // --- Lesson 1 Interactive Checks ---
+
+        // Exercise 1.1: Tₙ = 4n - 3. Find T₁, T₅, T₁₂
+        function checkPatternTerms() {
+            // T₁ = 1, T₅ = 17, T₁₂ = 45
+            const answers = { 'p1-t1': 1, 'p1-t5': 17, 'p1-t12': 45 };
+            let correctCount = 0;
+            const totalCount = Object.keys(answers).length;
+            const feedbackElement = document.getElementById('p1-feedback');
+
+            for (const id in answers) {
+                const input = document.getElementById(id);
+                // Clear previous validation styles
+                input.classList.remove('border-red-500', 'border-green-500');
+                
+                if (parseInt(input.value) === answers[id]) {
+                    input.classList.add('border-green-500');
+                    correctCount++;
+                } else {
+                    input.classList.add('border-red-500');
+                }
+            }
+
+            if (correctCount === totalCount) {
+                feedbackElement.textContent = `🥳 All Correct! The terms are 1, 17, and 45. Great work!`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-green-600';
+            } else {
+                feedbackElement.textContent = `Keep trying! ${correctCount}/${totalCount} correct. Remember to substitute 'n' into Tₙ = 4n - 3.`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-red-500';
+            }
+        }
+
+        // Exercise 1.2: Sequence 1, 7, 13, 19, ... Find Tₙ = dn + c
+        function checkGeneralTerm() {
+            // d = 6, c = -5 (Tₙ = 6n - 5)
+            const correctD = 6;
+            const correctC = -5;
+            const userD = parseInt(document.getElementById('p2-d').value);
+            const userC = parseInt(document.getElementById('p2-c').value);
+            const feedbackElement = document.getElementById('p2-feedback');
+            let correct = true;
+            
+            // Clear previous validation styles
+            document.getElementById('p2-d').classList.remove('border-red-500', 'border-green-500');
+            document.getElementById('p2-c').classList.remove('border-red-500', 'border-green-500');
+
+            if (userD !== correctD) {
+                document.getElementById('p2-d').classList.add('border-red-500');
+                correct = false;
+            } else {
+                document.getElementById('p2-d').classList.add('border-green-500');
+            }
+
+            if (userC !== correctC) {
+                document.getElementById('p2-c').classList.add('border-red-500');
+                correct = false;
+            } else {
+                document.getElementById('p2-c').classList.add('border-green-500');
+            }
+
+            if (correct) {
+                feedbackElement.textContent = `🎉 Perfect! The General Term is Tₙ = 6n - 5.`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-green-600';
+            } else {
+                feedbackElement.textContent = `❌ Incorrect. Check your Common Difference (d = 6) and your Constant (c = -5).`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-red-500';
+            }
+        }
+
+        // --- Lesson 2 Interactive Checks ---
+
+        // Exercise 2.1 A: Convert 43₁₀ to Binary
+        function checkDecimalToBinary() {
+            // 43₁₀ = 101011₂
+            const correctAnswer = "101011";
+            const userAnswer = document.getElementById('b1-binary').value.replace(/_2| /g, '');
+            const feedbackElement = document.getElementById('b1-feedback');
+            const input = document.getElementById('b1-binary');
+            input.classList.remove('border-red-500', 'border-green-500');
+
+            if (userAnswer === correctAnswer) {
+                feedbackElement.textContent = `✅ Correct! 43₁₀ = 101011₂.`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-green-600';
+                input.classList.add('border-green-500');
+            } else {
+                feedbackElement.textContent = `❌ Incorrect. Check your repeated division. The correct answer is 101011.`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-red-500';
+                input.classList.add('border-red-500');
+            }
+        }
+
+        // Exercise 2.1 B: Convert 110111₂ to Decimal
+        function checkBinaryToDecimal() {
+            // 110111₂ = 55₁₀
+            const correctAnswer = 55;
+            const userAnswer = parseInt(document.getElementById('b2-decimal').value);
+            const feedbackElement = document.getElementById('b2-feedback');
+            const input = document.getElementById('b2-decimal');
+            input.classList.remove('border-red-500', 'border-green-500');
+
+            if (userAnswer === correctAnswer) {
+                feedbackElement.textContent = `✅ Correct! 110111₂ = 55₁₀.`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-green-600';
+                input.classList.add('border-green-500');
+            } else {
+                feedbackElement.textContent = `❌ Incorrect. Check your powers of 2. The correct answer is 55.`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-red-500';
+                input.classList.add('border-red-500');
+            }
+        }
+
+        // Exercise 2.2 A: Addition 1110₂ + 111₂
+        function checkBinaryAddition() {
+            // 1110₂ + 111₂ = 10101₂
+            const correctAnswer = "10101";
+            const userAnswer = document.getElementById('b3-add').value.replace(/_2| /g, '');
+            const feedbackElement = document.getElementById('b3-add');
+            const input = document.getElementById('b3-add');
+            input.classList.remove('border-red-500', 'border-green-500');
+
+            if (userAnswer === correctAnswer) {
+                feedbackElement.textContent = `✅ Correct! The sum is 10101₂. Don't forget the carries!`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-green-600';
+                input.classList.add('border-green-500');
+            } else {
+                feedbackElement.textContent = `❌ Incorrect. The correct answer is 10101. Remember: 1 + 1 = 10₂.`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-red-500';
+                input.classList.add('border-red-500');
+            }
+        }
+
+        // Exercise 2.2 B: Subtraction 1100₂ - 111₂
+        function checkBinarySubtraction() {
+            // 1100₂ - 111₂ = 101₂
+            const correctAnswer = "101";
+            // Allow 101, 0101, or 00101
+            const userAnswer = document.getElementById('b4-subtract').value.replace(/_2| /g, '').padStart(5, '0');
+            const feedbackElement = document.getElementById('b4-subtract');
+            const input = document.getElementById('b4-subtract');
+            input.classList.remove('border-red-500', 'border-green-500');
+
+            if (userAnswer.endsWith(correctAnswer) && userAnswer.length >= 3) {
+                feedbackElement.textContent = `✅ Correct! The difference is 101₂. Subtraction is hard—great job with the borrowing!`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-green-600';
+                input.classList.add('border-green-500');
+            } else {
+                feedbackElement.textContent = `❌ Incorrect. The correct answer is 101. Be careful when borrowing across multiple columns!`;
+                feedbackElement.className = 'mt-3 font-bold text-center text-red-500';
+                input.classList.add('border-red-500');
+            }
+        }
+        
+        // --- Utility Functions ---
+
+        // Display a specific section and hide others
+        function showSection(sectionId) {
+            document.querySelectorAll('section').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(`${sectionId}-section`).classList.remove('hidden');
+
+            // Update button styles 
+            document.querySelectorAll('.btn-primary').forEach(btn => {
+                btn.classList.remove('bg-blue-800', 'bg-yellow-800');
+                btn.classList.add('bg-blue-500', 'hover:bg-blue-600');
+            });
+        
+            if (sectionId === 'quiz') {
+                document.getElementById('btn-quiz').classList.remove('bg-yellow-500', 'hover:bg-yellow-600');
+                document.getElementById('btn-quiz').classList.add('bg-yellow-800');
+                renderQuiz(); 
+            } else if (sectionId === 'patterns') {
+                document.getElementById('btn-patterns').classList.remove('bg-blue-500', 'hover:bg-blue-600');
+                document.getElementById('btn-patterns').classList.add('bg-blue-800');
+            } else if (sectionId === 'binary') {
+                document.getElementById('btn-binary').classList.remove('bg-blue-500', 'hover:bg-blue-600');
+                document.getElementById('btn-binary').classList.add('bg-blue-800');
+            }
+        }
+        
+        // --- Quiz Functions (Render/Submit) ---
+        function renderQuiz() {
+            const quizContainer = document.getElementById('quiz-container');
+            quizContainer.innerHTML = ''; // Clear previous content
+
+            quizQuestions.forEach((q, qIndex) => {
+                const qDiv = document.createElement('div');
+                qDiv.className = 'p-5 bg-gray-50 rounded-xl border border-gray-200';
+                qDiv.innerHTML = `<p class="text-xl font-semibold text-gray-800 mb-4">${q.question}</p>`;
+
+                const optionsDiv = document.createElement('div');
+                optionsDiv.className = 'grid grid-cols-1 md:grid-cols-2 gap-4';
+
+                q.options.forEach((optionText, oIndex) => {
+                    const label = String.fromCharCode(65 + oIndex); // A, B, C, D
+                    const optionId = `q${qIndex}-option${oIndex}`;
+
+                    const optionButton = document.createElement('div');
+                    optionButton.id = optionId;
+                    optionButton.className = 'quiz-option p-4 border-2 border-indigo-300 rounded-lg bg-white hover:bg-indigo-50';
+                    optionButton.innerHTML = `<span class="font-bold mr-2">${label}.</span> ${optionText}`;
+                    optionButton.onclick = () => selectOption(qIndex, label, optionId);
+
+                    optionsDiv.appendChild(optionButton);
+                });
+
+                qDiv.appendChild(optionsDiv);
+                quizContainer.appendChild(qDiv);
+            });
+            // Re-apply stored answers if available
+            Object.keys(userAnswers).forEach(qIndex => {
+                const ans = userAnswers[qIndex];
+                if (ans) {
+                    const optionId = `q${qIndex}-option${ans.charCodeAt(0) - 65}`;
+                    document.getElementById(optionId).classList.add('bg-indigo-200');
+                }
+            });
+        }
+
+        function selectOption(qIndex, label, optionId) {
+            // Deselect previous option for this question
+            const prevAnswer = userAnswers[qIndex];
+            if (prevAnswer) {
+                const prevOptionId = `q${qIndex}-option${prevAnswer.charCodeAt(0) - 65}`;
+                document.getElementById(prevOptionId).classList.remove('bg-indigo-200');
+            }
+
+            // Select new option
+            userAnswers[qIndex] = label;
+            document.getElementById(optionId).classList.add('bg-indigo-200');
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            const total = quizQuestions.length;
+
+            quizQuestions.forEach((q, qIndex) => {
+                const userAnswerLabel = userAnswers[qIndex];
+                const correctAnswerLabel = q.answer;
+                
+                // Get the index of the user's selected option
+                const userIndex = userAnswerLabel ? userAnswerLabel.charCodeAt(0) - 65 : -1;
+                
+                // Highlight and provide feedback
+                q.options.forEach((optionText, oIndex) => {
+                    const optionElement = document.getElementById(`q${qIndex}-option${oIndex}`);
+                    optionElement.onclick = null; // Disable further clicks
+                    optionElement.classList.remove('quiz-option', 'bg-indigo-200', 'hover:bg-indigo-50');
+
+                    if (oIndex === q.correctIndex) {
+                        // Highlight the correct answer
+                        optionElement.classList.add('correct');
+                    }
+                    
+                    if (oIndex === userIndex && userIndex !== q.correctIndex) {
+                        // Highlight the user's incorrect choice
+                        optionElement.classList.add('incorrect');
+                    }
+                });
+
+                // Calculate score
+                if (userAnswerLabel === correctAnswerLabel) {
+                    score++;
+                }
+            });
+
+            const scoreElement = document.getElementById('quiz-score');
+            const submitBtn = document.getElementById('submit-btn');
+            const resetBtn = document.getElementById('reset-btn');
+
+            scoreElement.textContent = `Final Score: ${score}/${total}`;
+            scoreElement.classList.remove('hidden');
+            submitBtn.classList.add('hidden');
+            resetBtn.classList.remove('hidden');
+        }
+        
+        function resetQuiz() {
+            userAnswers = {};
+            document.getElementById('quiz-score').classList.add('hidden');
+            document.getElementById('submit-btn').classList.remove('hidden');
+            document.getElementById('reset-btn').classList.add('hidden');
+            renderQuiz();
+        }
+
+        // --- Initialization ---
+        window.onload = () => {
+            // Show the first lesson by default on load
+            showSection('patterns');
+        };
+
+    </script>
+</body>
+</html>
