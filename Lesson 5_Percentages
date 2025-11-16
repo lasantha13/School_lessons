@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Profit Quest: A Percentage Adventure</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6;
+        }
+        .concept-card {
+            background-color: #ffffff;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .formula {
+            background-color: #e0f2f1; /* Teal light */
+            padding: 0.75rem;
+            border-left: 5px solid #0d9488; /* Teal dark */
+            font-weight: 600;
+            border-radius: 0.5rem;
+            margin-top: 1rem;
+        }
+        .btn-calc {
+            background-color: #f97316; /* Orange */
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            transition: background-color 0.2s;
+        }
+        .btn-calc:hover {
+            background-color: #ea580c;
+        }
+        .quiz-option {
+            cursor: pointer;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-radius: 0.5rem;
+            border: 2px solid #d1d5db;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .quiz-option:hover {
+            background-color: #f3f4f6;
+        }
+        .correct {
+            background-color: #a7f3d0; /* Green light */
+            border-color: #059669; /* Green dark */
+        }
+        .incorrect {
+            background-color: #fecaca; /* Red light */
+            border-color: #ef4444; /* Red dark */
+        }
+        .header-bg {
+            background-color: #10b981; /* Emerald */
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <!-- Header -->
+    <header class="header-bg text-white p-6 rounded-t-xl mb-8 shadow-xl">
+        <h1 class="text-4xl font-extrabold text-center">💰 The Profit Quest 💰</h1>
+        <p class="text-xl font-light text-center mt-2">Mastering Percentages, Profit, Loss, Discounts, and Commissions!</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+
+        <!-- CONCEPT 1: PROFIT AND LOSS -->
+        <section id="profit-loss" class="concept-card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="mr-3 text-emerald-500">1️⃣</span> The Basics: Profit & Loss
+            </h2>
+            <p class="text-gray-600 mb-4">
+                Imagine you run a fruit stand. Everything starts with the **Cost** (what you pay for the item) and the **Selling Price** (what the customer pays you).
+            </p>
+
+            <div class="formula">
+                <p>💸 **PROFIT** happens when: Selling Price > Cost</p>
+                $$\text{Profit} = \text{Selling Price} - \text{Cost}$$
+            </div>
+            <div class="formula mt-4 bg-red-100 border-red-500">
+                <p>📉 **LOSS** happens when: Cost > Selling Price</p>
+                $$\text{Loss} = \text{Cost} - \text{Selling Price}$$
+            </div>
+
+            <!-- Interactive Calculator 1 -->
+            <div class="mt-6 p-4 bg-yellow-50 rounded-lg border border-yellow-200">
+                <h3 class="font-semibold text-lg text-yellow-800 mb-3">Try It! The Lemonade Stand</h3>
+                <div class="space-y-3">
+                    <label class="block">
+                        <span class="text-sm text-gray-700">Cost (What you paid): Rs</span>
+                        <input type="number" id="pl_cost" value="150" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                    </label>
+                    <label class="block">
+                        <span class="text-sm text-gray-700">Selling Price (What you sold it for): Rs</span>
+                        <input type="number" id="pl_sp" value="200" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                    </label>
+                    <button onclick="calculateProfitLoss()" class="btn-calc w-full">Calculate Result</button>
+                    <p id="pl_result" class="text-center font-bold text-xl mt-3"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCEPT 2: PROFIT/LOSS PERCENTAGE -->
+        <section id="percentage" class="concept-card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="mr-3 text-sky-500">2️⃣</span> The True Score: Profit % / Loss %
+            </h2>
+            <p class="text-gray-600 mb-4">
+                Which is a better deal? Making Rs 100 profit on a Rs 500 item, or making Rs 100 profit on a Rs 5,000 item? Percentages tell the *whole story* by comparing the profit/loss to the original **Cost** (the money you invested).
+            </p>
+
+            <div class="formula">
+                $$\text{Profit \%} = \frac{\text{Profit}}{\text{Cost}} \times 100\%$$
+                <span class="text-xs italic text-gray-700">Always calculated on the Cost Price!</span>
+            </div>
+
+            <!-- Interactive Calculator 2 -->
+            <div class="mt-6 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <h3 class="font-semibold text-lg text-blue-800 mb-3">Calculate the Percentage!</h3>
+                <div class="space-y-3">
+                    <label class="block">
+                        <span class="text-sm text-gray-700">Total Profit or Loss (Rs):</span>
+                        <input type="number" id="pp_pl" value="100" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                    </label>
+                    <label class="block">
+                        <span class="text-sm text-gray-700">Original Cost (Rs):</span>
+                        <input type="number" id="pp_cost" value="800" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm p-2">
+                    </label>
+                    <button onclick="calculatePercentage()" class="btn-calc w-full">Find %</button>
+                    <p id="pp_result" class="text-center font-bold text-xl mt-3"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCEPT 3 & 4: DISCOUNTS AND COMMISSIONS -->
+        <section id="discounts-commissions" class="concept-card">
+            <h2 class="text-3xl font-bold text-gray-800 mb-4 flex items-center">
+                <span class="mr-3 text-purple-500">3️⃣ & 4️⃣</span> Discounts & Commissions
+            </h2>
+            <p class="text-gray-600 mb-4">
+                These are two different ways percentages are used in sales.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-4">
+                <!-- Discounts -->
+                <div class="p-4 bg-green-50 rounded-lg border border-green-200">
+                    <h3 class="font-semibold text-xl text-green-800 mb-3">🛍️ Discounts (Good for Customers)</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        A discount is a reduction from the **Marked Price** (the sticker price). The customer pays less!
+                    </p>
+                    <div class="formula bg-white border-green-500 text-sm">
+                        $$\text{Discount} = \text{Marked Price} \times \frac{\text{Discount \%}}{100}$$
+                    </div>
+                    <label class="block mt-4">
+                        <span class="text-sm text-gray-700">Marked Price: Rs 2000</span>
+                        <span class="text-sm text-red-500 font-bold ml-4">Discount: 15%</span>
+                    </label>
+                    <button onclick="calculateDiscount(2000, 15)" class="btn-calc mt-2 w-full">Calc Selling Price</button>
+                    <p id="disc_result" class="text-center font-bold text-md mt-3"></p>
+                </div>
+                
+                <!-- Commissions -->
+                <div class="p-4 bg-orange-50 rounded-lg border border-orange-200">
+                    <h3 class="font-semibold text-xl text-orange-800 mb-3">🤝 Commissions (Fee for Service)</h3>
+                    <p class="text-sm text-gray-600 mb-3">
+                        A commission is a fee paid to a broker/sales agent, calculated on the **Total Sale Value**.
+                    </p>
+                    <div class="formula bg-white border-orange-500 text-sm">
+                        $$\text{Commission} = \text{Sale Value} \times \frac{\text{Commission \%}}{100}$$
+                    </div>
+                    <label class="block mt-4">
+                        <span class="text-sm text-gray-700">House Sale Value: Rs 5,000,000</span>
+                        <span class="text-sm text-orange-500 font-bold ml-4">Commission: 2%</span>
+                    </label>
+                    <button onclick="calculateCommission(5000000, 2)" class="btn-calc mt-2 w-full">Calc Commission</button>
+                    <p id="comm_result" class="text-center font-bold text-md mt-3"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUIZ SECTION -->
+        <section id="quiz" class="concept-card bg-gray-100 p-6">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 flex items-center">
+                <span class="mr-3 text-red-500">🏆</span> Check Your Knowledge! (MCQ)
+            </h2>
+            
+            <div id="quiz-container" class="space-y-6">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+
+            <button onclick="submitQuiz()" class="btn-calc w-full mt-8 p-3 text-lg font-bold">
+                Submit Answers
+            </button>
+            <p id="quiz-score" class="text-center text-2xl font-extrabold mt-4 hidden"></p>
+        </section>
+
+    </main>
+
+    <script>
+        // --- Calculator Logic ---
+
+        function calculateProfitLoss() {
+            const cost = parseFloat(document.getElementById('pl_cost').value);
+            const sp = parseFloat(document.getElementById('pl_sp').value);
+            const resultElement = document.getElementById('pl_result');
+
+            if (isNaN(cost) || isNaN(sp)) {
+                resultElement.textContent = "Please enter valid numbers.";
+                resultElement.className = 'text-center font-bold text-xl mt-3 text-red-600';
+                return;
+            }
+
+            if (sp > cost) {
+                const profit = sp - cost;
+                resultElement.textContent = `🎉 PROFIT: Rs ${profit.toFixed(2)}`;
+                resultElement.className = 'text-center font-bold text-xl mt-3 text-green-600';
+            } else if (cost > sp) {
+                const loss = cost - sp;
+                resultElement.textContent = `😭 LOSS: Rs ${loss.toFixed(2)}`;
+                resultElement.className = 'text-center font-bold text-xl mt-3 text-red-600';
+            } else {
+                resultElement.textContent = "⚖️ No Profit, No Loss.";
+                resultElement.className = 'text-center font-bold text-xl mt-3 text-blue-600';
+            }
+        }
+
+        function calculatePercentage() {
+            const pl = parseFloat(document.getElementById('pp_pl').value);
+            const cost = parseFloat(document.getElementById('pp_cost').value);
+            const resultElement = document.getElementById('pp_result');
+
+            if (isNaN(pl) || isNaN(cost) || cost <= 0) {
+                resultElement.textContent = "Please enter valid numbers (Cost > 0).";
+                resultElement.className = 'text-center font-bold text-xl mt-3 text-red-600';
+                return;
+            }
+
+            const percentage = (pl / cost) * 100;
+
+            let type = (pl >= 0) ? "Profit" : "Loss";
+            const absPercentage = Math.abs(percentage);
+            
+            resultElement.textContent = `📊 ${type} Percentage: ${absPercentage.toFixed(2)}%`;
+            resultElement.className = `text-center font-bold text-xl mt-3 ${pl >= 0 ? 'text-green-600' : 'text-red-600'}`;
+        }
+
+        function calculateDiscount(markedPrice, discountPercent) {
+            const sellingPrice = markedPrice * (1 - discountPercent / 100);
+            const resultElement = document.getElementById('disc_result');
+            resultElement.textContent = `The Selling Price is: Rs ${sellingPrice.toFixed(2)}`;
+            resultElement.className = 'text-center font-bold text-lg mt-3 text-green-700';
+        }
+
+        function calculateCommission(saleValue, commissionPercent) {
+            const commissionAmount = saleValue * (commissionPercent / 100);
+            const resultElement = document.getElementById('comm_result');
+            resultElement.textContent = `The Commission Paid is: Rs ${commissionAmount.toLocaleString('en-US')}`;
+            resultElement.className = 'text-center font-bold text-lg mt-3 text-orange-700';
+        }
+
+
+        // --- Quiz Logic ---
+
+        const quizQuestions = [
+            {
+                question: "1. A shop owner buys a toy for Rs 400 and sells it for Rs 500. What is the Profit Percentage?",
+                options: ["25%", "20%", "100%", "10%"],
+                answer: "25%",
+                explanation: "Profit is Rs 100. Profit % = (100 / 400) * 100% = 25%."
+            },
+            {
+                question: "2. A t-shirt has a Marked Price of Rs 1,000. It is sold with a 20% discount. What is the Selling Price?",
+                options: ["Rs 200", "Rs 800", "Rs 980", "Rs 1,200"],
+                answer: "Rs 800",
+                explanation: "Discount is 20% of 1000 = Rs 200. Selling Price = 1000 - 200 = Rs 800."
+            },
+            {
+                question: "3. If the Cost Price of an item is Rs 500 and the Selling Price is Rs 450, what is the loss incurred?",
+                options: ["Rs 950", "Rs 50", "Rs 10", "No Loss"],
+                answer: "Rs 50",
+                explanation: "Loss = Cost Price - Selling Price = 500 - 450 = Rs 50."
+            },
+            {
+                question: "4. A broker receives a 3% commission on a land sale of Rs 1,000,000. How much commission is paid?",
+                options: ["Rs 300", "Rs 3,000", "Rs 30,000", "Rs 300,000"],
+                answer: "Rs 30,000",
+                explanation: "Commission = 3% of 1,000,000 = 0.03 * 1,000,000 = Rs 30,000."
+            },
+            {
+                question: "5. When calculating Profit Percentage, the profit is always compared to which amount?",
+                options: ["Selling Price", "Marked Price", "Cost Price", "Discount"],
+                answer: "Cost Price",
+                explanation: "Profit % is always calculated on the original Cost Price (the amount invested)."
+            }
+        ];
+
+        let userAnswers = {};
+
+        function loadQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            quizQuestions.forEach((q, index) => {
+                const qNum = index + 1;
+                const qDiv = document.createElement('div');
+                qDiv.className = 'quiz-question p-4 bg-white rounded-lg shadow-md';
+                qDiv.innerHTML = `<p class="font-semibold text-lg mb-3 text-gray-800">${q.question}</p>`;
+                
+                q.options.forEach(option => {
+                    const optionDiv = document.createElement('div');
+                    optionDiv.className = 'quiz-option';
+                    optionDiv.textContent = option;
+                    optionDiv.setAttribute('data-q-index', index);
+                    optionDiv.setAttribute('data-value', option);
+                    optionDiv.onclick = selectOption;
+                    qDiv.appendChild(optionDiv);
+                });
+                
+                const expDiv = document.createElement('p');
+                expDiv.id = `explanation-${index}`;
+                expDiv.className = 'text-sm text-gray-500 italic mt-3 pt-2 border-t hidden';
+                expDiv.textContent = `Correct Answer: ${q.answer}. Explanation: ${q.explanation}`;
+                qDiv.appendChild(expDiv);
+
+                container.appendChild(qDiv);
+            });
+        }
+
+        function selectOption(event) {
+            const selectedOption = event.target;
+            const qIndex = selectedOption.getAttribute('data-q-index');
+            const value = selectedOption.getAttribute('data-value');
+            
+            // Clear previous selection styling for this question
+            document.querySelectorAll(`.quiz-option[data-q-index="${qIndex}"]`).forEach(opt => {
+                opt.classList.remove('bg-yellow-200', 'border-yellow-500');
+            });
+
+            // Apply selected styling
+            selectedOption.classList.add('bg-yellow-200', 'border-yellow-500');
+            
+            // Store answer
+            userAnswers[qIndex] = value;
+        }
+
+        function submitQuiz() {
+            let score = 0;
+            quizQuestions.forEach((q, index) => {
+                const selectedValue = userAnswers[index];
+                const options = document.querySelectorAll(`.quiz-option[data-q-index="${index}"]`);
+                const explanation = document.getElementById(`explanation-${index}`);
+                
+                // Reset/clear previous styling
+                options.forEach(opt => opt.classList.remove('correct', 'incorrect', 'bg-yellow-200', 'border-yellow-500'));
+                explanation.classList.add('hidden');
+
+                if (selectedValue) {
+                    explanation.classList.remove('hidden');
+                    if (selectedValue === q.answer) {
+                        score++;
+                        // Find the selected option and mark it correct
+                        options.forEach(opt => {
+                            if (opt.getAttribute('data-value') === selectedValue) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                    } else {
+                        // Mark selected as incorrect, and correct answer as correct
+                        options.forEach(opt => {
+                            if (opt.getAttribute('data-value') === selectedValue) {
+                                opt.classList.add('incorrect');
+                            }
+                            if (opt.getAttribute('data-value') === q.answer) {
+                                opt.classList.add('correct');
+                            }
+                        });
+                    }
+                }
+            });
+
+            const scoreElement = document.getElementById('quiz-score');
+            scoreElement.textContent = `Final Score: ${score} / ${quizQuestions.length}`;
+            scoreElement.classList.remove('hidden');
+            
+            // Scroll to the score
+            scoreElement.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Initialize quiz and math rendering on load
+        window.onload = function() {
+            loadQuiz();
+            // Render MathJax/KaTeX (using basic JS for formula rendering compatibility)
+            // Note: Since external math libraries aren't directly supported in the single file mandate, 
+            // the formula appearance is handled by CSS and simple HTML, but keeping the LaTeX style for clarity.
+        };
+
+    </script>
+</body>
+</html>
