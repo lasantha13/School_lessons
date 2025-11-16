@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Factoring Fun Factory</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles for fun and interactivity */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7f9fc; /* Light background */
+            color: #1f2937; /* Dark text */
+        }
+        .concept-card {
+            background-color: #ffffff;
+            border: 2px solid #3b82f6; /* Blue border */
+            border-radius: 1.5rem; /* More rounded corners */
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .concept-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+        }
+        .lesson-title {
+            background: linear-gradient(90deg, #4f46e5, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .quiz-button {
+            background-color: #3b82f6;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.75rem;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+        .quiz-button:hover {
+            background-color: #2563eb;
+            transform: translateY(-1px);
+        }
+        .quiz-button.selected {
+            background-color: #10b981; /* Green for selected answer */
+            border: 3px solid #059669;
+        }
+        .feedback-box {
+            border-radius: 0.5rem;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        .correct {
+            background-color: #d1fae5; /* Light green */
+            color: #065f46;
+            border-left: 5px solid #10b981;
+        }
+        .incorrect {
+            background-color: #fee2e2; /* Light red */
+            color: #991b1b;
+            border-left: 5px solid #ef4444;
+        }
+        .highlight {
+            color: #ef4444;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-10">
+
+    <header class="text-center mb-12">
+        <h1 class="text-5xl font-extrabold lesson-title">The Factoring Fun Factory!</h1>
+        <p class="text-xl text-gray-600 mt-2">Unlocking the Secrets of Algebraic Expressions</p>
+    </header>
+
+    <div id="lesson-content" class="max-w-4xl mx-auto space-y-12">
+
+        <!-- C1: Factoring Common Monomial Factor (Review) -->
+        <section class="concept-card p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-4 flex items-center">
+                1. The Common Factor Catcher! (Foundation)
+            </h2>
+            <p class="mb-4">Factoring is like reverse-distributing. Instead of taking an expression like $2(x+y)$ and turning it into $2x+2y$, we start with the sum ($2x+2y$) and find the product: $2(x+y)$. The number or variable we take out is the **Common Factor**.</p>
+            <div class="bg-gray-50 p-4 rounded-lg border border-gray-200">
+                <p class="font-mono text-lg">Example: Factorize $6a + 12b - 18$</p>
+                <p class="mt-2 text-sm text-gray-700">The biggest number that divides 6, 12, and 18 is 6. So, we pull out the 6:</p>
+                <p class="font-mono text-xl text-green-700 mt-1">$$6(a + 2b - 3)$$</p>
+            </div>
+        </section>
+
+        <!-- C2: Factoring Algebraic Expressions with Four Terms (Grouping) -->
+        <section class="concept-card p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-4 flex items-center">
+                2. Grouping: The Four-Term Puzzle!
+            </h2>
+            <p class="mb-4">What if there's no common factor for all four terms? We use **Grouping**! This is exactly what your curriculum suggests, and it's super visual.</p>
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mb-4">
+                <h3 class="font-bold text-blue-700 mb-2">Visualizing Grouping (Area Model)</h3>
+                <p class="text-sm mb-3">Imagine an area with four sections: $ax$, $ay$, $bx$, and $by$.</p>
+                <!-- Simplified Diagram representation -->
+                <div class="flex flex-col items-center">
+                    <div class="w-full max-w-sm grid grid-cols-2 grid-rows-2 text-center text-white font-bold h-32">
+                        <div class="bg-yellow-400 border border-white flex justify-center items-center">ax</div>
+                        <div class="bg-red-400 border border-white flex justify-center items-center">bx</div>
+                        <div class="bg-green-400 border border-white flex justify-center items-center">ay</div>
+                        <div class="bg-purple-400 border border-white flex justify-center items-center">by</div>
+                    </div>
+                </div>
+                <p class="mt-3 text-sm">When we group them: $(ax+ay)$ has common factor $a$. $(bx+by)$ has common factor $b$.</p>
+                <p class="font-mono text-lg mt-1">$$a(x+y) + b(x+y)$$</p>
+                <p class="text-sm mt-2">Now, look! $\mathbf{(x+y)}$ is the new common factor! We pull it out to get:</p>
+                <p class="font-mono text-xl text-green-700 mt-1">$$\mathbf{(x+y)(a+b)}$$</p>
+            </div>
+            <p class="mb-4 text-sm"><span class="highlight">Key Step:</span> You must get the exact same binomial factor (like $x+y$) in both groups to finish factoring!</p>
+        </section>
+
+        <!-- C3: Factoring Trinomial Quadratic Expressions (Splitting the Middle Term) -->
+        <section class="concept-card p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-4 flex items-center">
+                3. The Trident of Factoring: $x^{2}+bx+c$
+            </h2>
+            <p class="mb-4">This is the most challenging one! We have to turn a three-term expression (a trinomial) back into a product of two binomials, like $(x+3)(x+4)$.</p>
+            <h3 class="text-xl font-semibold text-gray-700 mt-4 mb-2">The Golden Rule (The Trident):</h3>
+            <p class="p-3 bg-yellow-100 rounded-lg border border-yellow-300">
+                To factorize $\mathbf{x^{2}+bx+c}$, you must find two numbers, let's call them $\mathbf{p}$ and $\mathbf{q}$, such that:
+                <br>
+                1. $\mathbf{p + q = b}$ (They <span class="highlight">ADD</span> to the middle number).
+                <br>
+                2. $\mathbf{p \times q = c}$ (They <span class="highlight">MULTIPLY</span> to the last number).
+            </p>
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200 mt-4">
+                <p class="font-mono text-lg">Example: Factorize $x^{2}+7x+12$</p>
+                <p class="mt-2 text-sm text-gray-700">We need two numbers that $\mathbf{Add}$ to 7 (the middle coefficient, $b$) and $\mathbf{Multiply}$ to 12 (the constant term, $c$).</p>
+                <ul class="list-disc list-inside ml-4 text-sm">
+                    <li>Pairs that multiply to 12: (1, 12), (2, 6), <span class="highlight">(3, 4)</span></li>
+                    <li>Which pair adds to 7? $3 + 4 = 7$. Jackpot!</li>
+                </ul>
+                <p class="text-sm mt-3">Now we **split the middle term** $7x$ into $3x+4x$ and use **Grouping** (Concept 2):</p>
+                <p class="font-mono text-md mt-1">$$x^{2}+3x+4x+12$$</p>
+                <p class="font-mono text-md mt-1">$$x(x+3) + 4(x+3)$$</p>
+                <p class="font-mono text-xl text-green-700 mt-1">$$\mathbf{(x+3)(x+4)}$$</p>
+            </div>
+        </section>
+
+        <!-- C4: Factoring Difference of Two Squares -->
+        <section class="concept-card p-6 md:p-8">
+            <h2 class="text-3xl font-bold text-indigo-600 mb-4 flex items-center">
+                4. The Difference of Squares Shortcut!
+            </h2>
+            <p class="mb-4">This is the best factoring shortcut, perfect for speed! When you have one square term minus another square term, you can instantly factor it using this rule:</p>
+            <p class="p-3 text-center bg-purple-100 rounded-lg border border-purple-300 font-extrabold text-2xl text-purple-700 mt-2 mb-4">
+                $$\mathbf{A^2 - B^2 = (A - B)(A + B)}$$
+            </p>
+            <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                <p class="font-mono text-lg">Example 1: Factorize $x^{2}-25$</p>
+                <p class="mt-2 text-sm text-gray-700">Notice $25$ is $5^2$. So, $A=x$ and $B=5$.</p>
+                <p class="font-mono text-xl text-green-700 mt-1">$$\mathbf{(x - 5)(x + 5)}$$</p>
+                <p class="font-mono text-lg mt-4">Example 2: Factorize $4a^{2}-49$</p>
+                <p class="mt-2 text-sm text-gray-700">Notice $4a^{2} = (2a)^2$ and $49 = 7^2$. So, $A=2a$ and $B=7$.</p>
+                <p class="font-mono text-xl text-green-700 mt-1">$$\mathbf{(2a - 7)(2a + 7)}$$</p>
+            </div>
+        </section>
+
+        <!-- Interactive Quiz Section -->
+        <section id="quiz-section" class="concept-card p-6 md:p-8 bg-pink-50 border-pink-400">
+            <h2 class="text-4xl font-extrabold text-pink-700 mb-6 text-center">🧠 Factoring Master Test!</h2>
+            <p class="text-center mb-6 text-lg text-gray-600">Time to see what you've learned. Select the correct factorized expression for each problem!</p>
+
+            <div id="quiz-container" class="space-y-8">
+                <!-- Quiz questions will be inserted here by JavaScript -->
+            </div>
+
+            <button onclick="checkAllAnswers()" class="quiz-button w-full mt-8 text-xl">
+                Check My Answers!
+            </button>
+            <div id="quiz-results" class="mt-4 text-center font-bold text-2xl"></div>
+        </section>
+
+    </div>
+
+    <script>
+        // Global Quiz Data
+        const quizQuestions = [
+            {
+                type: 'C2',
+                question: '1. (Grouping - Four Terms) Factorize: $ax - 8a + 3x - 24$',
+                options: [
+                    '$(a+3)(x-8)$',
+                    '$(a-3)(x+8)$',
+                    '$(ax+3)(x-8)$',
+                    '$(a-8)(x+3)$'
+                ],
+                answer: '$(a+3)(x-8)$',
+                explanation: '$ax - 8a + 3x - 24$. Group 1: $a(x-8)$. Group 2: $+3(x-8)$. Common factor is $(x-8)$. Result: $(x-8)(a+3)$.'
+            },
+            {
+                type: 'C3',
+                question: '2. (Trident - Positive) Find the factors of the quadratic trinomial: $x^{2}+9x+18$',
+                options: [
+                    '$(x+3)(x+6)$',
+                    '$(x+2)(x+9)$',
+                    '$(x+1)(x+18)$',
+                    '$(x-3)(x-6)$'
+                ],
+                answer: '$(x+3)(x+6)$',
+                explanation: 'We need two numbers that multiply to 18 and add to 9. The numbers are 3 and 6 ($3\\times6=18$, $3+6=9$).'
+            },
+            {
+                type: 'C4-Visual',
+                question: '3. (Difference of Squares - Visual) The area of a large square is $100$ and a small square is $y^2$. What are the factors of the remaining area?',
+                options: [
+                    '$(10-y)(10+y)$',
+                    '$(100-y)(100+y)$',
+                    '$(10-y)^2$',
+                    '$(10y)(10y)$'
+                ],
+                answer: '$(10-y)(10+y)$',
+                explanation: 'The remaining area is $100 - y^2$, which is $10^2 - y^2$. Using $A^2-B^2 = (A-B)(A+B)$, the factors are $(10-y)(10+y)$.'
+            },
+            {
+                type: 'C3',
+                question: '4. (Trident - Negative) Factorize: $a^{2}-a-20$',
+                options: [
+                    '$(a-5)(a+4)$',
+                    '$(a+5)(a-4)$',
+                    '$(a-10)(a+2)$',
+                    '$(a-20)(a+1)$'
+                ],
+                answer: '$(a-5)(a+4)$',
+                explanation: 'We need two numbers that multiply to -20 and add to -1. The numbers are -5 and 4 ($-5\\times4=-20$, $-5+4=-1$).'
+            },
+            {
+                type: 'C4-Complex',
+                question: '5. (Difference of Squares - Complex) Factorize completely: $2x^{2}-72$',
+                options: [
+                    '$(2x-8)(x+9)$',
+                    '$2(x-6)(x+6)$',
+                    '$2(x^{2}-36)$',
+                    '$(x-6)(x+6)$'
+                ],
+                answer: '$2(x-6)(x+6)$',
+                explanation: 'First, take out the common factor 2: $2(x^2-36)$. Then factor the difference of squares: $2(x-6)(x+6)$.'
+            },
+            {
+                type: 'C3-Diagram',
+                question: '6. (Trident - Diagram) The area of a rectangle is represented by $y^{2}+6y+9$. Which pair of side lengths (factors) is correct?',
+                options: [
+                    '$(y+3)$ and $(y-3)$',
+                    '$(y+6)$ and $(y+3)$',
+                    '$(y+3)$ and $(y+3)$',
+                    '$(y+1)$ and $(y+9)$'
+                ],
+                answer: '$(y+3)$ and $(y+3)$',
+                explanation: 'We need two numbers that multiply to 9 and add to 6. The numbers are 3 and 3. The factors are $(y+3)(y+3)$ or $(y+3)^2$, which means it\'s a square!.'
+            }
+        ];
+
+        let userAnswers = {};
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = ''; // Clear previous content
+
+            quizQuestions.forEach((q, index) => {
+                const qNum = index + 1;
+                const questionHtml = `
+                    <div class="p-5 bg-white rounded-xl border border-gray-200 shadow-sm" data-q-index="${index}">
+                        <p class="text-xl font-semibold mb-3">${qNum}. ${q.question}</p>
+                        <div class="space-y-2">
+                            ${q.options.map(option => `
+                                <button
+                                    class="w-full text-left py-2 px-4 border border-gray-300 rounded-lg transition duration-150 ease-in-out hover:bg-indigo-50 text-gray-700"
+                                    onclick="selectAnswer(${index}, '${option.replace(/'/g, "\\'")}')"
+                                    data-option="${option}"
+                                >
+                                    <span class="font-mono">${option}</span>
+                                </button>
+                            `).join('')}
+                        </div>
+                        <div id="feedback-${index}" class="feedback-box hidden"></div>
+                    </div>
+                `;
+                container.innerHTML += questionHtml;
+            });
+        }
+
+        function selectAnswer(qIndex, selectedOption) {
+            userAnswers[qIndex] = selectedOption;
+            const questionElement = document.querySelector(`[data-q-index="${qIndex}"]`);
+            const buttons = questionElement.querySelectorAll('button');
+
+            // Reset all buttons
+            buttons.forEach(btn => {
+                btn.classList.remove('selected', 'bg-indigo-600', 'bg-green-500', 'text-white', 'border-indigo-600');
+                btn.classList.add('bg-white', 'hover:bg-indigo-50', 'text-gray-700');
+            });
+
+            // Highlight the selected button
+            const selectedButton = Array.from(buttons).find(btn => btn.getAttribute('data-option') === selectedOption);
+            if (selectedButton) {
+                selectedButton.classList.add('selected', 'bg-indigo-600', 'text-white', 'border-indigo-600');
+                selectedButton.classList.remove('bg-white', 'hover:bg-indigo-50', 'text-gray-700');
+            }
+
+            // Clear previous feedback
+            document.getElementById(`feedback-${qIndex}`).classList.add('hidden');
+        }
+
+        function checkAllAnswers() {
+            let correctCount = 0;
+            const totalQuestions = quizQuestions.length;
+
+            quizQuestions.forEach((q, index) => {
+                const feedbackBox = document.getElementById(`feedback-${index}`);
+                feedbackBox.classList.remove('hidden', 'correct', 'incorrect');
+                const selectedAnswer = userAnswers[index];
+
+                if (!selectedAnswer) {
+                    feedbackBox.classList.add('incorrect');
+                    feedbackBox.innerHTML = 'You missed this one! Please select an answer.';
+                    return;
+                }
+
+                if (selectedAnswer === q.answer) {
+                    correctCount++;
+                    feedbackBox.classList.add('correct');
+                    feedbackBox.innerHTML = '✅ Correct! Amazing job.';
+                } else {
+                    feedbackBox.classList.add('incorrect');
+                    feedbackBox.innerHTML = `❌ Incorrect. The correct answer is <span class="highlight">${q.answer}</span>. <br><span class="text-sm font-normal">Why? ${q.explanation}</span>`;
+                }
+
+                // Update button visuals to show correct/incorrect after check
+                const questionElement = document.querySelector(`[data-q-index="${index}"]`);
+                const buttons = questionElement.querySelectorAll('button');
+                buttons.forEach(btn => {
+                    btn.classList.remove('selected', 'bg-indigo-600', 'text-white');
+                    btn.classList.add('bg-white', 'hover:bg-indigo-50', 'text-gray-700');
+
+                    const option = btn.getAttribute('data-option');
+                    if (option === q.answer) {
+                        btn.classList.add('bg-green-200', 'border-green-500'); // Highlight correct answer
+                    } else if (option === selectedAnswer && option !== q.answer) {
+                        btn.classList.add('bg-red-200', 'border-red-500'); // Highlight incorrect selection
+                    }
+                });
+            });
+
+            const resultsElement = document.getElementById('quiz-results');
+            const percentage = (correctCount / totalQuestions) * 100;
+            resultsElement.innerHTML = `You scored ${correctCount} out of ${totalQuestions}! (${percentage.toFixed(0)}%)`;
+            resultsElement.classList.add(percentage >= 70 ? 'text-green-600' : 'text-red-600');
+            resultsElement.classList.remove(percentage < 70 ? 'text-green-600' : 'text-red-600');
+        }
+
+        // Initialize quiz on load
+        window.onload = renderQuiz;
+    </script>
+</body>
+</html>
