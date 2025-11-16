@@ -1,1 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fraction Superpowers & BODMAS Boost</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4f46e5', // Indigo-600
+                        'secondary': '#10b981', // Emerald-500
+                        'accent': '#f59e0b', // Amber-500
+                        'bg-light': '#f9fafb', // Gray-50
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Base Styling */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            line-height: 1.6;
+        }
+        .lesson-card {
+            background-color: white;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 1.5rem; /* rounded-3xl */
+            padding: 2rem;
+            margin: 1.5rem 0;
+            transition: transform 0.3s ease;
+        }
+        .lesson-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+        }
+        .lesson-title {
+            border-bottom: 4px solid #f59e0b;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
 
+        /* Interactive Elements */
+        .mcq-option {
+            background-color: #e5e7eb; /* Gray-200 */
+            border: 2px solid #d1d5db;
+            padding: 0.75rem 1rem;
+            margin-bottom: 0.75rem;
+            border-radius: 0.75rem; /* rounded-xl */
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .mcq-option:hover {
+            background-color: #d1d5db; /* Gray-300 */
+        }
+        .mcq-option.correct-answer {
+            background-color: #a7f3d0; /* Emerald-200 */
+            border-color: #10b981; /* Secondary */
+        }
+        .mcq-option.wrong-answer {
+            background-color: #fecaca; /* Red-200 */
+            border-color: #ef4444; /* Red-500 */
+        }
+        .result-message {
+            margin-top: 1rem;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            display: none;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="text-center mb-10">
+        <h1 class="text-5xl font-extrabold text-primary mb-2">Fraction Superpowers & Order Boost!</h1>
+        <p class="text-xl text-gray-600">Your interactive lesson for Grade 8/9 Math on Fractions and BODMAS.</p>
+    </header>
+
+    <main class="max-w-4xl mx-auto">
+        <!-- Lesson 0: Foundational Review (New Section) -->
+        <section id="lesson-fundamentals" class="lesson-card bg-indigo-50 border-4 border-indigo-200">
+            <h2 class="lesson-title text-3xl font-bold text-primary">Lesson 0: Quick Fraction Fundamentals Review</h2>
+            
+            <p class="text-lg mb-4 text-gray-700 font-semibold">Before we dive into the advanced topics, let's quickly review the essential fraction concepts you've mastered!</p>
+            
+            <div class="space-y-6">
+                <!-- 0.1 Fraction Types -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">0.1 Fraction Types & Conversion</h3>
+                    <ul class="list-disc list-inside ml-4 text-gray-700 space-y-2">
+                        <li>**Proper Fraction:** Numerator is smaller than the denominator (e.g., 3/5).</li>
+                        <li>**Improper Fraction:** Numerator is equal to or larger than the denominator (e.g., 5/3).</li>
+                        <li>**Mixed Number:** A whole number and a proper fraction combined (e.g., 1 2/3).</li>
+                        <li>**Conversion Key:** To convert a mixed number (1 2/3) to an improper fraction: (1 &times; 3) + 2 = 5. Result: 5/3.</li>
+                    </ul>
+                </div>
+                
+                <!-- 0.2 Equivalent Fractions -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">0.2 Equivalent Fractions</h3>
+                    <p class="text-gray-700">You can get an equivalent fraction by multiplying (or dividing) the numerator and denominator by the **same number** (that isn't zero).</p>
+                    <div class="bg-white p-3 rounded-lg border border-gray-200 mt-2 font-mono text-xl">
+                        Example: 2/5 = (2 &times; 2) / (5 &times; 2) = **4/10**
+                    </div>
+                </div>
+
+                <!-- 0.3 Reciprocals and Division -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-gray-800 mb-2">0.3 Reciprocals and Division</h3>
+                    <p class="text-gray-700">Dividing by a fraction is the same as multiplying by its **reciprocal** (the fraction flipped upside down).</p>
+                    <div class="bg-white p-3 rounded-lg border border-gray-200 mt-2 font-mono text-xl">
+                        Example: 4/3 $\div$ 2 is the same as 4/3 &times; **1/2**
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 1: The "OF" Operation (Original Content) -->
+        <section id="lesson-of" class="lesson-card">
+            <h2 class="lesson-title text-3xl font-bold text-gray-800">Lesson 1: The Secret Power of "OF"</h2>
+            
+            <p class="text-lg mb-4 text-gray-700">In math, when you see the word "**of**" between two fractions or a fraction and a number, it's a secret code for one simple operation: **Multiplication!**</p>
+            
+            <div class="bg-indigo-50 p-6 rounded-xl border border-indigo-200 mb-6">
+                <p class="font-mono text-xl text-indigo-800 text-center">
+                    "1/2 <b>of</b> 3/4" is the same as "1/2 &times; 3/4"
+                </p>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-gray-800 mt-6 mb-3">Why does "of" mean "times"?</h3>
+            <p class="text-gray-700 mb-4">Think of it like this: If you have a chocolate bar (the whole) and you take 1/2 of it, you multiply the whole by 1/2 to find your share. Now, imagine you only have 1/2 of a chocolate bar, and your friend wants 1/2 **of** *that* 1/2. You are finding a **fraction of a fraction**, which requires multiplying the pieces together! </p>
+            
+            <p class="text-lg text-gray-700">Let's try an example from your notes:</p>
+
+            <div class="bg-emerald-50 p-4 rounded-lg border border-emerald-200 mt-4">
+                <p class="text-lg font-semibold text-emerald-800">Example: Find 3/5 of 500 meters.</p>
+                <div class="text-xl text-gray-800 mt-2 font-mono">
+                    <p>3/5 of 500 </p>
+                    <p> = 3/5 &times; 500</p>
+                    <p> = (3 &times; 500) / 5</p>
+                    <p> = 3 &times; 100 <span class="text-sm text-gray-500">(after cancelling 500 and 5)</span></p>
+                    <p> = <b>300</b> meters</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lesson 2: BODMAS - The Traffic Lights for Calculations (Original Content) -->
+        <section id="lesson-bodmas" class="lesson-card">
+            <h2 class="lesson-title text-3xl font-bold text-gray-800">Lesson 2: BODMAS - The Traffic Controller!</h2>
+            
+            <p class="text-lg mb-4 text-gray-700">When an expression has addition, subtraction, multiplication, and division all mixed up, we need a rule to know what to do first. Otherwise, everyone gets a different answer! That rule is **BODMAS** (or PEMDAS in some countries).</p>
+
+            <div class="grid grid-cols-2 gap-4 text-center bg-accent-50 p-6 rounded-xl border-2 border-accent mb-6">
+                <div class="p-3 bg-accent-100 rounded-lg shadow-md">
+                    <p class="text-3xl font-extrabold text-accent-800">B</p>
+                    <p class="text-xl font-semibold">Brackets</p>
+                </div>
+                <div class="p-3 bg-accent-200 rounded-lg shadow-md">
+                    <p class="text-3xl font-extrabold text-accent-800">O</p>
+                    <p class="text-xl font-semibold">Orders (Powers/Roots) & <b>OF</b></p>
+                </div>
+                <div class="p-3 bg-secondary-100 rounded-lg shadow-md">
+                    <p class="text-3xl font-extrabold text-secondary-800">DM</p>
+                    <p class="text-xl font-semibold">Division / Multiplication (Left to Right)</p>
+                </div>
+                <div class="p-3 bg-primary-100 rounded-lg shadow-md">
+                    <p class="text-3xl font-extrabold text-primary-800">AS</p>
+                    <p class="text-xl font-semibold">Addition / Subtraction (Left to Right)</p>
+                </div>
+            </div>
+
+            <h3 class="text-2xl font-semibold text-gray-800 mt-6 mb-3">The "O" is Key for Fractions!</h3>
+            <p class="text-gray-700 mb-4">For your lesson, remember that the **O (Orders)** includes the "of" operation. Because "of" is just multiplication, this means **multiplication from "of" must be done before regular multiplication (&times;) or division ($\div$)!**</p>
+
+            <div class="bg-indigo-50 p-4 rounded-lg border border-indigo-200 mt-4">
+                <p class="text-lg font-semibold text-indigo-800">Example: Simplifying with BODMAS</p>
+                <div class="text-xl text-gray-800 mt-2 font-mono">
+                    <p>Simplify: 1/4 + 5/6 &times; 1/2 $\div$ 4/3 of 3/2</p>
+                    <p class="text-sm font-bold text-primary">Step 1 (O - Of): Do the "of" first!</p>
+                    <p>4/3 of 3/2 = 4/3 &times; 3/2 = 2</p>
+                    <p>New Expression: 1/4 + 5/6 &times; 1/2 $\div$ 2</p>
+                    
+                    <p class="text-sm font-bold text-primary mt-3">Step 2 (DM - Left to Right):</p>
+                    <p>First, 5/6 &times; 1/2 = 5/12</p>
+                    <p>New Expression: 1/4 + 5/12 $\div$ 2</p>
+                    <p>Next, 5/12 $\div$ 2 = 5/12 &times; 1/2 = 5/24</p>
+                    <p>New Expression: 1/4 + 5/24</p>
+                    
+                    <p class="text-sm font-bold text-primary mt-3">Step 3 (AS):</p>
+                    <p>1/4 + 5/24 = 6/24 + 5/24 = <b>11/24</b></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Interactive Practice Quiz -->
+        <section id="quiz" class="lesson-card">
+            <h2 class="lesson-title text-3xl font-bold text-gray-800">Test Your Superpowers! (MCQ Quiz)</h2>
+            <p class="text-lg mb-6 text-gray-700">Choose the correct option for each question to test what you've learned. Good luck!</p>
+
+            <form id="mcq-form">
+                <!-- NEW Question 1: Reciprocal -->
+                <div class="mb-8 p-4 bg-bg-light rounded-xl shadow-inner">
+                    <p class="font-bold text-xl mb-3 text-primary">1. What is the reciprocal of the mixed number 2 3/5?</p>
+                    <div class="mcq-option" onclick="selectAnswer(this, 1, 'B')">A) 5/2</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 1, 'B')">B) 5/13</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 1, 'B')">C) 13/5</div>
+                    <div class="result-message" data-q="1"></div>
+                </div>
+
+                <!-- NEW Question 2: Equivalent Fraction -->
+                <div class="mb-8 p-4 bg-bg-light rounded-xl shadow-inner">
+                    <p class="font-bold text-xl mb-3 text-primary">2. Which fraction is equivalent to 8/12?</p>
+                    <div class="mcq-option" onclick="selectAnswer(this, 2, 'A')">A) 2/3</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 2, 'A')">B) 4/3</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 2, 'A')">C) 16/12</div>
+                    <div class="result-message" data-q="2"></div>
+                </div>
+
+                <!-- NEW Question 3: Fraction Subtraction (Requires Common Denominator) -->
+                <div class="mb-8 p-4 bg-bg-light rounded-xl shadow-inner">
+                    <p class="font-bold text-xl mb-3 text-primary">3. Find the value: 5/6 - 2/3</p>
+                    <div class="mcq-option" onclick="selectAnswer(this, 3, 'C')">A) 3/3</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 3, 'C')">B) 3/6</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 3, 'C')">C) 1/6</div>
+                    <div class="result-message" data-q="3"></div>
+                </div>
+
+                <!-- Original Question 1: OF -->
+                <div class="mb-8 p-4 bg-bg-light rounded-xl shadow-inner">
+                    <p class="font-bold text-xl mb-3 text-primary">4. What is the value of 2/3 of 1 1/2?</p>
+                    <div class="mcq-option" onclick="selectAnswer(this, 4, 'B')">A) 1/2</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 4, 'B')">B) 1</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 4, 'B')">C) 2</div>
+                    <div class="result-message" data-q="4"></div>
+                </div>
+
+                <!-- Original Question 2: BODMAS Brackets -->
+                <div class="mb-8 p-4 bg-bg-light rounded-xl shadow-inner">
+                    <p class="font-bold text-xl mb-3 text-primary">5. Simplify: (1/4 + 1/2) &times; 2/3</p>
+                    <div class="mcq-option" onclick="selectAnswer(this, 5, 'C')">A) 1/3</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 5, 'C')">B) 3/4</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 5, 'C')">C) 1/2</div>
+                    <div class="result-message" data-q="5"></div>
+                </div>
+
+                <!-- Original Question 3: BODMAS OF vs x -->
+                <div class="mb-8 p-4 bg-bg-light rounded-xl shadow-inner">
+                    <p class="font-bold text-xl mb-3 text-primary">6. In the expression 1/5 &times; 2/3 of 3/4, which operation do you perform first?</p>
+                    <div class="mcq-option" onclick="selectAnswer(this, 6, 'A')">A) The "of" (&times;) operation</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 6, 'A')">B) The first multiplication (&times;)</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 6, 'A')">C) It doesn't matter</div>
+                    <div class="result-message" data-q="6"></div>
+                </div>
+
+                <!-- Original Question 4: Complex BODMAS -->
+                <div class="mb-8 p-4 bg-bg-light rounded-xl shadow-inner">
+                    <p class="font-bold text-xl mb-3 text-primary">7. What is the simplified value of 1/3 + 1/3 &times; 9? (Remember BODMAS!)</p>
+                    <div class="mcq-option" onclick="selectAnswer(this, 7, 'B')">A) 10/3</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 7, 'B')">B) 3 1/3</div>
+                    <div class="mcq-option" onclick="selectAnswer(this, 7, 'B')">C) 1</div>
+                    <div class="result-message" data-q="7"></div>
+                </div>
+            </form>
+
+            <div id="final-score" class="text-center mt-10 p-6 bg-secondary-100 rounded-2xl border-4 border-secondary hidden">
+                <h3 class="text-3xl font-extrabold text-secondary-800">Your Score: <span id="score-text"></span></h3>
+                <p id="feedback-text" class="text-xl mt-2 text-gray-700"></p>
+                <button onclick="resetQuiz()" class="mt-4 bg-primary text-white font-bold py-2 px-6 rounded-xl hover:bg-indigo-700 transition duration-150 shadow-lg">Try Again</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const correctAnswers = {
+            1: 'B', // Reciprocal of 2 3/5 (13/5) is 5/13
+            2: 'A', // 8/12 simplified is 2/3
+            3: 'C', // 5/6 - 4/6 = 1/6
+            4: 'B', // (2/3) * (3/2) = 1
+            5: 'C', // (3/4) * (2/3) = 1/2
+            6: 'A', // 'Of' has priority (O in BODMAS)
+            7: 'B'  // (1/3) + (3) = 3 1/3
+        };
+
+        const userSelections = {};
+        let score = 0;
+        let questionsAnswered = 0;
+        const totalQuestions = Object.keys(correctAnswers).length;
+
+        function selectAnswer(element, qNum, optionLetter) {
+            const questionElement = element.parentElement;
+            const messageElement = document.querySelector(`.result-message[data-q="${qNum}"]`);
+
+            // Check if already answered
+            if (userSelections[qNum]) {
+                return; // Prevent changing the answer once clicked
+            }
+
+            // Mark the selection
+            userSelections[qNum] = optionLetter;
+            questionsAnswered++;
+
+            // Check correctness
+            const isCorrect = (optionLetter === correctAnswers[qNum]);
+            
+            // Visual feedback
+            Array.from(questionElement.children).forEach(child => {
+                if (child.classList.contains('mcq-option')) {
+                    child.style.pointerEvents = 'none'; // Disable other clicks
+                    
+                    // Determine the option letter from the inner text (A) B) C)
+                    const optionText = child.innerText.trim().charAt(0);
+
+                    if (optionText === optionLetter) {
+                        // This is the selected option
+                        child.classList.add(isCorrect ? 'correct-answer' : 'wrong-answer');
+                    }
+                    
+                    // Highlight the correct answer globally
+                    if (optionText === correctAnswers[qNum]) {
+                        child.classList.add('correct-answer');
+                    }
+                }
+            });
+
+            // Show result message
+            messageElement.textContent = isCorrect ? 'Correct! You got the answer right.' : 'Oops! The correct answer is highlighted.';
+            messageElement.classList.remove('hidden');
+            messageElement.style.display = 'block';
+            messageElement.classList.add(isCorrect ? 'bg-secondary-100' : 'bg-red-100', isCorrect ? 'text-secondary-800' : 'text-red-800');
+
+            if (isCorrect) {
+                score++;
+            }
+
+            // Check if quiz is finished
+            if (questionsAnswered === totalQuestions) {
+                showFinalScore();
+            }
+        }
+
+        function showFinalScore() {
+            const scoreText = document.getElementById('score-text');
+            const feedbackText = document.getElementById('feedback-text');
+            const finalScoreDiv = document.getElementById('final-score');
+
+            scoreText.textContent = `${score} / ${totalQuestions}`;
+
+            let feedback = '';
+            if (score === totalQuestions) {
+                feedback = "Amazing job! You've mastered all the fraction fundamentals, 'of', and the BODMAS rule!";
+                finalScoreDiv.classList.remove('bg-secondary-100');
+                finalScoreDiv.classList.add('bg-yellow-100');
+            } else if (score >= totalQuestions * 0.7) {
+                feedback = "Great work! You're solid on most concepts. Review the examples for the questions you missed.";
+            } else {
+                feedback = "It looks like you need a little more practice. Go back and check the lessons again!";
+            }
+            feedbackText.textContent = feedback;
+            finalScoreDiv.classList.remove('hidden');
+        }
+
+        function resetQuiz() {
+            score = 0;
+            questionsAnswered = 0;
+            Object.keys(userSelections).forEach(key => delete userSelections[key]);
+
+            const options = document.querySelectorAll('.mcq-option');
+            options.forEach(opt => {
+                opt.classList.remove('correct-answer', 'wrong-answer');
+                opt.style.pointerEvents = 'auto';
+            });
+
+            const messages = document.querySelectorAll('.result-message');
+            messages.forEach(msg => {
+                msg.classList.add('hidden');
+                msg.style.display = 'none';
+                msg.classList.remove('bg-secondary-100', 'text-secondary-800', 'bg-red-100', 'text-red-800');
+                msg.textContent = '';
+            });
+
+            document.getElementById('final-score').classList.add('hidden');
+            document.getElementById('final-score').classList.remove('bg-yellow-100');
+            document.getElementById('final-score').classList.add('bg-secondary-100');
+        }
+
+        // Initialize quiz on load
+        document.addEventListener('DOMContentLoaded', resetQuiz);
+    </script>
+</body>
+</html>
